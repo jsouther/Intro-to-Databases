@@ -11,4 +11,54 @@
     <h1>Laptops</h1>
 
     <p>This page is used to add or remove laptops.</p>
+
+    <h3>Add Laptop</h3>
+    <form>
+      <fieldset>
+        <label>Make:
+          <select name="type_input" required>
+            <option hidden disabled disabled selected value> -- select an option -- </option>
+            <option value="Dell">Dell</option>
+            <option value="HP">HP</option>
+          </select>
+        </label><br>
+
+        <label> Model:
+          <input type="text" maxlength="25" name="model_input" required>
+        </label><br>
+
+        <label>Serial Number:
+          <input type="text" maxlength="25" name="serial_input" required>
+        </label><br>
+
+        <label>Purchase Date:
+          <input type="date" name="purchase_date_input" required>
+        </label><br>
+
+        <label>Warranty End Date:
+          <input type="date" name="warranty_date_input">
+        </label><br>
+
+        <label>CPU:
+          <input type="text" maxlength="25" name="cpu_input" required>
+        </label><br>
+
+        <label>RAM (GB):
+          <input type="number" min="1" max="999" name="ram_input"required>
+        </label><br>
+
+        <input type="submit" value="Add Laptop">
+      </fieldset>
+    </form>
+
+    <h3>Remove Laptop</h3>
+      <form>
+        <fieldset>
+          <label>Enter serial number of laptop to remove:
+            <input type="text" name="remove-laptop" maxlength="25" required>
+          </label>
+
+          <input type="submit" value="Remove Laptop">
+        </fieldset>
+      </form>
   </body>
