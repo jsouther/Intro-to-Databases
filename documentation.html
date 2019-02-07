@@ -11,4 +11,37 @@
     <h1>Documentation</h1>
 
     <p>This page is used to add or remove documentation.</p>
+
+    <h3>Add Documentation</h3>
+    <form>
+      <fieldset>
+        <label> Title:
+          <input type="text" maxlength="100" name="title_input" required>
+        </label><br>
+
+        <label> Document Link:
+          <input type="text" maxlength="255" name="link_input" required>
+        </label><br>
+
+        <input type="submit" value="Add Documentation">
+      </fieldset>
+    </form>
+
+    <h3>Remove Documentation</h3>
+      <table>
+        <thead>
+          <tr>
+            <td>Document Title</td>
+            <td>Link</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>populate table from database</td>
+            <td></td>
+            <td><button>Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+
   </body>
