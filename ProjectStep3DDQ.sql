@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Feb 08, 2019 at 03:25 PM
+-- Generation Time: Feb 08, 2019 at 03:38 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.0.33
 
@@ -104,7 +104,7 @@ CREATE TABLE `users` (
   `last_name` varchar(50) NOT NULL,
   `department` varchar(50) NOT NULL,
   `job_title` varchar(75) NOT NULL,
-  `pref_phone` int(10) NOT NULL,
+  `pref_phone` varchar(12) NOT NULL,
   `pref_email` varchar(65) NOT NULL,
   `home_office` int(11) NOT NULL,
   `assigned_laptop` int(11) NOT NULL
