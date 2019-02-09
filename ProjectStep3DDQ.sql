@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Feb 08, 2019 at 07:22 PM
+-- Generation Time: Feb 09, 2019 at 03:33 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.0.33
 
@@ -49,7 +49,8 @@ INSERT INTO `laptops` (`Id`, `make`, `model`, `sn`, `purchase_date`, `warranty_e
 (5, 'Dell', 'E5637', '415456457ad', '2015-01-06', '2018-01-06', 'i5 1010', 4),
 (6, 'Dell', 'E5530', '32jgjl4lklj', '2011-06-29', '2014-06-29', 'i3 930', 2),
 (7, 'HP', 'ProBook 445', 'jleiwl3523', '2019-01-02', '2023-01-02', 'i7 9090', 16),
-(8, 'HP', 'Elite X2', 'fk3983kgls84', '2018-12-25', '2023-12-25', 'Ryzen 3', 8);
+(8, 'HP', 'Elite X2', 'fk3983kgls84', '2018-12-25', '2023-12-25', 'Ryzen 3', 8),
+(9, 'HP', 'ENVY', '8s9olwoskw', '2019-01-15', '2023-01-15', 'i7-8550u', 32);
 
 -- --------------------------------------------------------
 
@@ -77,6 +78,7 @@ INSERT INTO `laptops_laptopdocs` (`Id`, `lt_id`, `doc_id`) VALUES
 (14, 6, 1),
 (13, 6, 2),
 (15, 7, 3),
+(17, 7, 4),
 (16, 8, 3);
 
 -- --------------------------------------------------------
@@ -98,7 +100,8 @@ CREATE TABLE `laptop_docs` (
 INSERT INTO `laptop_docs` (`Id`, `title`, `doc_link`) VALUES
 (1, 'How to Reset Your Windows 10 PC', 'https://www.laptopmag.com/articles/reset-windows-10-pc'),
 (2, 'Diagnostic Error Code Standardization For 2015 & 2016 Notebook and Tablet Systems', 'https://www.dell.com/support/article/us/en/04/sln300723/diagnostic-error-code-standardization-for-2015-2016-notebook-and-tablet-systems?lang=en'),
-(3, 'HP Notebook PCs - Troubleshooting Error Messages on a Black Screen that may Occur During Startup or ', 'https://support.hp.com/us-en/document/c00480483');
+(3, 'HP Notebook PCs - Troubleshooting Error Messages on a Black Screen that may Occur During Startup or ', 'https://support.hp.com/us-en/document/c00480483'),
+(4, 'HP Notebook PCs - Purchasing a Replacement Battery', 'https://support.hp.com/us-en/document/c00821572');
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,8 @@ INSERT INTO `location` (`Id`, `street_address`, `city`, `state`, `zip`) VALUES
 (1, '12345 Main Street', 'Boise', 'ID', '83706'),
 (2, '9875 First Ave', 'Salt Lake City', 'UT', '85487'),
 (3, '9924 Front Street', 'Hailey', 'ID', '85687'),
-(4, '5554 Avenue A', 'Seattle', 'WA', '95874');
+(4, '5554 Avenue A', 'Seattle', 'WA', '95874'),
+(5, '12546 Ocean Blvd', 'Santa Monica', 'CA', '91142');
 
 -- --------------------------------------------------------
 
@@ -145,13 +149,15 @@ CREATE TABLE `peripherals` (
 
 INSERT INTO `peripherals` (`Id`, `equip_type`, `make`, `model`, `assigned_user`, `asset_tag`) VALUES
 (2, 'Mouse', 'Dell', '', 13, 101),
-(3, 'Keyboard', '103', 'kb234', 13, 0),
+(3, 'Keyboard', 'IBM', 'kb234', 13, 92),
 (6, 'Webcam', 'Microsoft', 'WC873', 13, 104),
-(7, 'Keyboard', '103', 'kb234', 13, 103),
+(7, 'Keyboard', 'logitech', 'kb234', 13, 103),
 (8, 'Monitor', 'HP', 'ND3402', 13, 106),
 (9, 'Monitor', 'HP', '16gh', 13, 109),
 (10, 'Dock', 'Plugable', 'DC-100', 13, 120),
-(11, 'Keyboard', 'Logitec', 'LKB372', 7, 119);
+(11, 'Keyboard', 'Logitec', 'LKB372', 7, 119),
+(13, 'Headset', 'Plantronics', '710', 11, 156),
+(15, 'Mouse', 'HP', '', 14, 132);
 
 -- --------------------------------------------------------
 
@@ -180,7 +186,8 @@ INSERT INTO `users` (`Id`, `first_name`, `last_name`, `department`, `job_title`,
 (10, 'Bob', 'Builder', 'Operations', 'Foreman', '555-55-1234', 'bob@letsbuildit.com', 2, 1),
 (11, 'Mary', 'Contrary', 'Sales', 'Coordinator', '555-77-6666', 'mary@quite.com', 1, 4),
 (12, 'Greg', 'Merlot', 'Executive', 'CEO', '999-11-1111', 'Greg@imaceo.com', 4, 6),
-(13, 'Bill', 'Stone', 'Sales', 'Sales Executive', '123-45-6789', 'bill@pebkac.com', 3, 7);
+(13, 'Bill', 'Stone', 'Sales', 'Sales Executive', '123-45-6789', 'bill@pebkac.com', 3, 7),
+(14, 'Pichu', 'Pokemon', 'Operations', 'Electrician', '978-444-4578', 'zapper@niantic.com', 4, 8);
 
 --
 -- Indexes for dumped tables
@@ -241,37 +248,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `laptops`
 --
 ALTER TABLE `laptops`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `laptops_laptopdocs`
 --
 ALTER TABLE `laptops_laptopdocs`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `laptop_docs`
 --
 ALTER TABLE `laptop_docs`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `peripherals`
 --
 ALTER TABLE `peripherals`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
