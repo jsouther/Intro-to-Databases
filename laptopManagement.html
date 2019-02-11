@@ -1,48 +1,59 @@
 <!doctype html>
   <head>
     <meta charset="utf-8">
-    <title>Management</title>
+    <title>Laptop Management</title>
     <link rel="stylesheet" href="stylesheet.css" type="text/css">
   </head>
 
   <body>
     <a href="index.html">Return to Index</a>
 
-    <h1>Equipment Management</h1>
+    <h1>Laptop Management</h1>
 
-    <p>This page is used to assign/unassign laptops and peripherals to users.</p>
+    <p>This page is used to assign/unassign laptops to users. Documentation assigned to a laptop can also be found here.</p>
 
-    <!--<form>
-      <fieldset>
-        <label> First Name:
-          <input type="text" maxlength="50" name="fname_input">
-        </label>
-
-         <label> Last Name:
-          <input type="text" maxlength="50" name="lname_input">
-        </label>
-
-         <label> Email:
-          <input type="email" maxlength="65" name="email_input" required>
-        </label>
-
-        <input type="submit" value="Search Users">
-      </fieldset>
-    </form><br>-->
-
-   <!-- <h3>Search Laptop</h3>
+    <h3>Search Laptop</h3>
     <form>
       <fieldset>
         <label> Serial Number:
-          <input type="text" maxlength="25" name="serial_input">
+          <input type="text" maxlength="25" name="serial_input" required>
         </label>
 
         <input type="submit" value="Search Serial">
       </fieldset>
-    </form>-->
+    </form>
 
+    <span>populates if user searches by serial</span>
+    <table>
+      <thead>
+        <tr>
+          <td>Serial Number</td>
+          <td>Make</td>
+          <td>Model</td>
+          <td>CPU</td>
+          <td>RAM</td>
+          <td>User Email</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>populate table from database</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button>Assign to user/Remove From User</button></td>
+        </tr>
+      </tbody>
+    </table>
 
-    <span></span>
+    <ul>
+      <li>Document 1 link</li>
+      <li>Document 2 link</li>
+      <li>Document link....</li>
+    </ul>
+
     <h3>Unassigned Laptops</h3>
     <table>
       <thead>
@@ -71,6 +82,7 @@
     <table>
       <thead>
         <tr>
+          <td>User Email</td>
           <td>First Name</td>
           <td>Last Name</td>
           <td>Department</td>
@@ -85,7 +97,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><button>Edit Laptop</button></td>
+          <td><button>Unassign Laptop</button></td>
         </tr>
       </tbody>
     </table>
