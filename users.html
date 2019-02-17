@@ -10,7 +10,7 @@
 
     <h1>Users</h1>
 
-    <p>This page is used to add or remove users.</p>
+    <p>This page is used to add or remove users. <br>* Indicates required field.</p>
 
     <h3>Add User</h3>
     <form>
@@ -59,6 +59,61 @@
         <input type="submit" value="Add User">
       </fieldset>
     </form>
+
+    <h3>Edit User</h3>
+    <form>
+      <fieldset>
+        <label>Email Of User to Edit:
+          <input type="email" name="email_input" maxlength="65" required>
+        *</label><br><br>
+
+        <div>Updated Information</div>
+
+        <label> First Name:
+          <input type="text" maxlength="50" name="fname_input" required>
+        *</label><br>
+
+        <label>Last Name:
+          <input type="text" maxlength="50" name="lname_input" required>
+        *</label><br>
+
+        <label>Department:
+          <select name="department_input" required>
+            <option hidden disabled selected value> -- select an option -- </option>
+            <option value="Executive">Executive</option>
+            <option value="Admin">Admin</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Operations">Operations</option>
+            <option value="Sales">Sales</option>
+            <option value="IT">IT</option>
+            <option value="Marketing">Marketing</option>
+            <option value="HR">HR</option>
+          </select>
+        *</label><br>
+
+        <label>Job Title:
+          <input type="text" maxlength="75" name="title_input" required>
+        *</label><br>
+
+        <label>Phone Number:
+          <input type="tel" name="phone_input" pattern="[0-9]{3}[0-9]{3][0-9]{4}" maxlength="10" required>
+          <span>* Format: 1234567890</span>
+        </label><br>
+
+        <label>Email:
+          <input type="email" name="email_input" maxlength="65" required>
+        *</label><br>
+
+        <label>Office:
+          <select name="office_input" required>
+            <option hidden disabled selected value> -- available locations from location table -- </option>
+          </select>
+        *</label><br>
+
+        <input type="submit" value="Edit User">
+      </fieldset>
+    </form>
+
 
     <h3>Remove User</h3>
     <form>
@@ -119,6 +174,29 @@
       </fieldset>
     </form><br>
     
-    <span>table of all users in the database</span>
+    <table>
+        <thead>
+          <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Department</td>
+            <td>Job Title</td>
+            <td>Phone Number</td>
+            <td>Email</td>
+            <td>Office</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>shows all rows until searched</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
 
   </body>
