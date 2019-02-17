@@ -64,21 +64,21 @@
     <form>
       <fieldset>
         <label>Email Of User to Edit:
-          <input type="email" name="email_input" maxlength="65" required>
+          <input type="email" name="email_edit" maxlength="65" required>
         *</label><br><br>
 
         <div>Updated Information</div>
 
         <label> First Name:
-          <input type="text" maxlength="50" name="fname_input" required>
+          <input type="text" maxlength="50" name="fname_edit" required>
         *</label><br>
 
         <label>Last Name:
-          <input type="text" maxlength="50" name="lname_input" required>
+          <input type="text" maxlength="50" name="lname_edit" required>
         *</label><br>
 
         <label>Department:
-          <select name="department_input" required>
+          <select name="department_edit" required>
             <option hidden disabled selected value> -- select an option -- </option>
             <option value="Executive">Executive</option>
             <option value="Admin">Admin</option>
@@ -92,20 +92,20 @@
         *</label><br>
 
         <label>Job Title:
-          <input type="text" maxlength="75" name="title_input" required>
+          <input type="text" maxlength="75" name="title_edit" required>
         *</label><br>
 
         <label>Phone Number:
-          <input type="tel" name="phone_input" pattern="[0-9]{3}[0-9]{3][0-9]{4}" maxlength="10" required>
+          <input type="tel" name="phone_edit" pattern="[0-9]{3}[0-9]{3][0-9]{4}" maxlength="10" required>
           <span>* Format: 1234567890</span>
         </label><br>
 
         <label>Email:
-          <input type="email" name="email_input" maxlength="65" required>
+          <input type="email" name="email_edit" maxlength="65" required>
         *</label><br>
 
         <label>Office:
-          <select name="office_input" required>
+          <select name="office_edit" required>
             <option hidden disabled selected value> -- available locations from location table -- </option>
           </select>
         *</label><br>
@@ -119,7 +119,7 @@
     <form>
       <fieldset>
         <label>Enter email of user to remove:
-          <input type="email" name="remove-user" maxlength="65" required>
+          <input type="email" name="user_remove" maxlength="65" required>
         </label>
 
         <input type="submit" value="Remove User">

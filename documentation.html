@@ -23,6 +23,18 @@
           <input type="text" maxlength="255" name="link_input" required>
         *</label><br>
 
+        <label>PC Make:
+          <select name="make_input">
+              <option hidden disabled disabled selected value> -- select an option -- </option>
+              <option value="Dell">Dell</option>
+              <option value="HP">HP</option>
+          </select>
+        </label><br>
+
+        <label>PC Model:
+          <input type="text" maxlength="25" name="model_input">
+        </label><br>
+
         <input type="submit" value="Add Documentation">
       </fieldset>
     </form>
@@ -32,11 +44,11 @@
     <form>
       <fieldset>
         <legend>Search for document</legend>
-        <label>Title
+        <label>Title:
           <input type="text" maxlength="25" name="serial_search">
         </label><br>
 
-        <label>PC Make
+        <label>PC Make:
           <select name="make_search">
               <option hidden disabled disabled selected value> -- select an option -- </option>
               <option value="Dell">Dell</option>
@@ -44,7 +56,7 @@
           </select>
         </label><br>
 
-        <label>PC Model
+        <label>PC Model:
           <input type="text" maxlength="25" name="model_search">
         </label>
 
