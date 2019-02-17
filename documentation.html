@@ -17,31 +17,60 @@
       <fieldset>
         <label> Title:
           <input type="text" maxlength="100" name="title_input" required>
-        </label><br>
+        *</label><br>
 
-        <label> Document Link:
+        <label> Document Web Link:
           <input type="text" maxlength="255" name="link_input" required>
-        </label><br>
+        *</label><br>
 
         <input type="submit" value="Add Documentation">
       </fieldset>
     </form>
 
-    <h3>Remove Documentation</h3>
-      <table>
-        <thead>
-          <tr>
-            <td>Document Title</td>
-            <td>Link</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>populate table from database</td>
-            <td></td>
-            <td><button>Remove</button></td>
-          </tr>
-        </tbody>
-      </table>
+    <h3>Search/Remove Documentation</h3>
+
+    <form>
+      <fieldset>
+        <legend>Search for document</legend>
+        <label>Title
+          <input type="text" maxlength="25" name="serial_search">
+        </label><br>
+
+        <label>PC Make
+          <select name="make_search">
+              <option hidden disabled disabled selected value> -- select an option -- </option>
+              <option value="Dell">Dell</option>
+              <option value="HP">HP</option>
+          </select>
+        </label><br>
+
+        <label>PC Model
+          <input type="text" maxlength="25" name="model_search">
+        </label>
+
+        <br><input type="submit" value="Search">
+
+      </fieldset>
+    </form><br>
+
+    <table>
+      <thead>
+        <tr>
+          <td>PC Make</td>
+          <td>PC Model</td>
+          <td>Document Title</td>
+          <td>Link</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>shows all doc rows until searched</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button>Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
 
   </body>

@@ -16,14 +16,30 @@
     <form>
       <fieldset>
         <label> Serial Number:
-          <input type="text" maxlength="25" name="serial_input" required>
-        </label>
+          <input type="text" maxlength="25" name="serial_input">
+        </label><br>
 
-        <input type="submit" value="Search Serial">
+        <label>Email:
+          <input type="email" name="email_input" maxlength="65">
+        </label><br>
+
+         <label>Make:
+          <select name="make_input">
+            <option hidden disabled disabled selected value> -- select an option -- </option>
+            <option value="Dell">Dell</option>
+            <option value="HP">HP</option>
+          </select>
+        </label><br>
+
+        <label> Model:
+          <input type="text" maxlength="25" name="model_input">
+        </label><br>
+
+        <input type="submit" value="Search Laptop">
       </fieldset>
     </form>
 
-    <span>populates if user searches by serial</span>
+    <span>populates all laptops until searched</span>
     <table>
       <thead>
         <tr>
@@ -33,6 +49,7 @@
           <td>CPU</td>
           <td>RAM</td>
           <td>User Email</td>
+          <td>Location</td>
         </tr>
       </thead>
       <tbody>
@@ -43,12 +60,13 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
           <td><button>Assign to user/Remove From User</button></td>
         </tr>
       </tbody>
     </table>
 
-    <h3>Unassigned Laptops</h3>
+    <!--<h3>Unassigned Laptops</h3>
     <table>
       <thead>
         <tr>
@@ -91,9 +109,10 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
           <td><button>Unassign Laptop</button></td>
         </tr>
       </tbody>
-    </table>
+    </table>-->
 
   </body>

@@ -25,25 +25,59 @@
             <option value="Headset">Headset</option>
             <option value="Dock">Dock</option>
           </select>
-        </label><br>
+        *</label><br>
 
         <label> Asset Number:
           <input type="text" maxlength="25" name="assetnum_input" required>
-        </label><br>
+        *</label><br>
 
         <label> Make:
           <input type="text" maxlength="25" name="make_input" required>
-        </label><br>
+        *</label><br>
 
         <label>Model:
           <input type="text" maxlength="25" name="model_input" required>
-        </label><br>
+        *</label><br>
 
         <input type="submit" value="Add Peripheral">
       </fieldset>
     </form>
 
-    <h3>Remove Peripheral</h3>
+    <h3>View/Remove Peripheral</h3>
+
+      <form>
+      <fieldset>
+        <legend>Search for peripheral</legend>
+
+        <label>Equipment Type:
+          <select name="type_input">
+            <option hidden disabled disabled selected value> -- select an option -- </option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Mouse">Mouse</option>
+            <option value="Webcam">Webcam</option>
+            <option value="Monitor">Monitor</option>
+            <option value="Headset">Headset</option>
+            <option value="Dock">Dock</option>
+          </select>
+        </label><br>
+
+        <label> Asset Number:
+          <input type="text" maxlength="25" name="assetnum_input">
+        </label><br>
+
+        <label> Make:
+          <input type="text" maxlength="25" name="make_input">
+        </label><br>
+
+        <label>Model:
+          <input type="text" maxlength="25" name="model_input">
+        </label><br>
+
+        <br><input type="submit" value="Search">
+
+      </fieldset>
+    </form><br>
+
       <table>
         <thead>
           <tr>
@@ -56,11 +90,12 @@
         </thead>
         <tbody>
           <tr>
-            <td>populate table from database</td>
+            <td>shows all rows until searched</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            <td><button>Change User</button></td>
             <td><button>Remove</button></td>
           </tr>
         </tbody>
