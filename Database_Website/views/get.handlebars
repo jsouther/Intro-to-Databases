@@ -1,0 +1,13 @@
+<h1>GET Request Received</h1>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Data</th>
+	</tr>
+	{{#each getList}}
+	<tr>
+		<td style="padding-right:15px">{{this.name}}</td>
+		<td style="padding-left:15px">{{this.value}}</td>
+	</tr>
+	{{/each}}
+	</table>
