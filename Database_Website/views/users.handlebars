@@ -43,8 +43,10 @@
         *</label><br>
 
         <label>Office:
-          <select name="office_input" required>
-            <option hidden disabled selected value> -- available locations from location table -- </option>
+          <select name="location" required>
+            {{#each location}}
+            <option value="{{Id}}">{{city}}</option>
+            {{/each}}
           </select>
         *</label><br>
 
