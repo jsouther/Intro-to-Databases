@@ -23,6 +23,7 @@ app.use('/location', require('./location.js'));
 app.use('/peripherals', require('./peripherals.js'));
 app.use('/users', require('./users.js'));
 
+
 app.listen(app.post('port'), function(){
 	console.log("I'm listening");
 });
@@ -36,8 +37,8 @@ res.render('home');
 		
 });
 
-// //render the laptops page
-// app.get('/laptops',function(req,res,next){
+ //render the laptops page
+//app.get('/laptops',function(req,res,next){
 
 // res.render('laptops');
 
@@ -71,12 +72,12 @@ res.render('home');
 // });
 
 //render the laptop Management page
-app.get('/laptopManagement',function(req,res,next){
+//app.get('/laptopManagement',function(req,res,next){
 
-res.render('laptopManagement');
+//res.render('laptopManagement');
 
 		
-});
+//});
 
 
 // //render the documentation page 
@@ -114,54 +115,53 @@ res.render('laptopManagement');
 
 
 
-// //insert into laptops table  
-// app.post('/laptops',function(req,res,next){
-//   var context = {};
-//   var make=req.body.make_input; 
-//   var model=req.body.model_input;
-// var sn = req.body.serial_input;
-// var purchaseDate = req.body.purchase_date_input;
-// var warrantyDate = req.body.warranty_date_input;
-// var cpu = req.body.cpu_input;
-// var ram = req.body.ram_input;
-// console.log;
+//insert into laptops table  
+app.post('/laptops',function(req,res,next){
+var context = {};
+   var make=req.body.make_input; 
+   var model=req.body.model_input;
+   var sn = req.body.serial_input;
+   var purchaseDate = req.body.purchase_date_input;
+   var warrantyDate = req.body.warranty_date_input;
+   var cpu = req.body.cpu_input;
+   var ram = req.body.ram_input;
+
   
-// mysql.pool.query("INSERT INTO laptops(`make`,`model`,`sn`,`purchase_date`,`warranty_end_date`,`cpu`,`ram`) VALUES (?,?,?,?,?,?,?,?)", [make, model, sn, puchaseDate, warrantyDate, cpu, ram], function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = "Inserted id " + result.insertId;
-//     res.send(context.results);
-//   });
+ mysql.pool.query("INSERT INTO laptops (`make`,`model`,`sn`,`purchase_date`,`warranty_end_date`,`cpu`,`ram`) VALUES (?,?,?,?,?,?,?)", [make, model, sn, purchaseDate, warrantyDate, cpu, ram], function(err, result){
+     if(err){
+       next(err);
+       return;
+     }
+	 //console.log(result);
+     context.results = "Inserted id " + result.insertId;
+     res.send(context.results);
+   });
 
 	
-// });
+ });
 
-// //pretty much quit here
 
-// //insert into locations table  
-// app.post('/locations',function(req,res,next){
-//   var context = {};
-//   var tableName=req.body.name;
-//   var name=req.body.name;
-// var reps = req.body.reps;
-// var weight = req.body.weight;
-// var date = req.body.date;
-// var lbs = req.body.lbs;
-// console.log;
+
+ //insert into locations table  
+ app.post('/locations',function(req,res,next){
+   var context = {};
+   var address=req.body.address_input;
+   var city=req.body.city_input;
+   var state = req.body.state_input;
+   var zip = req.body.zip_input;
+ 
   
-// mysql.pool.query("INSERT INTO ?(`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [tableName, name, reps, weight, date, lbs], function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = "Inserted id " + result.insertId;
-//     res.send(context.results);
-//   });
+ mysql.pool.query("INSERT INTO location (`street_address`,`city`,`state`,`zip`) VALUES (?,?,?,?)", [address, city, state, zip], function(err, result){
+     if(err){
+       next(err);
+       return;
+     }
+     context.results = "Inserted id " + result.insertId;
+     res.send(context.results);
+  });
 
 	
-// });
+ });
 
 
 

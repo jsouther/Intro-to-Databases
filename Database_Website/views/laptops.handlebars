@@ -5,10 +5,10 @@
     <p>This page is used to add or remove laptops. <br>* Indicates required field.</p>
 
     <h3>Add Laptop</h3>
-    <form>
+    <form id="newLaptop">
       <fieldset>
         <label>Make:
-          <select name="make_input" required>
+          <select id="make_input" name="make_input" required>
             <option hidden disabled disabled selected value> -- select an option -- </option>
             <option value="Dell">Dell</option>
             <option value="HP">HP</option>
@@ -16,30 +16,30 @@
         *</label><br>
 
         <label> Model:
-          <input type="text" maxlength="25" name="model_input" required>
+          <input type="text" maxlength="25"  id="model_input" name="model_input" required>
         *</label><br>
 
         <label>Serial Number:
-          <input type="text" maxlength="25" name="serial_input" required>
+          <input type="text" maxlength="25" id="serial_input" name="serial_input" required>
         *</label><br>
 
         <label>Purchase Date:
-          <input type="date" name="purchase_date_input" required>
+          <input type="date" id="purchase_date_input" name="purchase_date_input" required>
         *</label><br>
 
         <label>Warranty End Date:
-          <input type="date" name="warranty_date_input">
+          <input type="date" id="warranty_date_input"  name="warranty_date_input">
         </label><br>
 
         <label>CPU:
-          <input type="text" maxlength="25" name="cpu_input" required>
+          <input type="text" maxlength="25" id="cpu_input" name="cpu_input" required>
         *</label><br>
 
         <label>RAM (GB):
-          <input type="number" min="1" max="999" name="ram_input"required>
+          <input type="number" min="1" max="999" id="ram_input" name="ram_input" required>
         *</label><br>
 
-        <input type="submit" value="Add Laptop"><br>
+        <input type="submit" value="Add Laptop" id="add_Laptop"><br>
 
       </fieldset>
     </form>
@@ -107,3 +107,5 @@
         {{/each}}
       </tbody>
     </table>
+	<script src="/static/js/pubLaptops.js"></script>
+	
