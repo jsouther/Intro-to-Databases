@@ -54,6 +54,7 @@
       </fieldset>
     </form>
 
+    {{!-- {{COMMENTED OUT EDIT AND DELETE USER FORMS}}
     <h3>Edit User</h3>
     <form>
       <fieldset>
@@ -108,7 +109,6 @@
       </fieldset>
     </form>
 
-
     <h3>Remove User</h3>
     <form>
       <fieldset>
@@ -119,6 +119,7 @@
         <input type="submit" value="Remove User">
       </fieldset>
     </form>
+    --}}
 
     <h3>All Users</h3>
 
@@ -192,6 +193,7 @@
             <td>{{pref_email}}</td>
             <td>{{city}}</td>
             <td>{{state}}</td>
+            <td><a href="/users/{{Id}}">Update User</a></td>
           </tr>
           {{/each}}
         </tbody>
