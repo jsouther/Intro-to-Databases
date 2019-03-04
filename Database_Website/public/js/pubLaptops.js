@@ -21,6 +21,7 @@ function postData(){
 			//getAllLaptops();  // Jacob, do you know how to call your function that lists all the laptops from here?
 			console.log("success");
 			document.getElementById("newLaptop").reset();
+      location.reload();
 			//var response = JSON.parse(postReq.responseText);
 			//document.getElementById('dataReturn').textContent = response.data;
 		}
