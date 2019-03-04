@@ -26,11 +26,22 @@ module.exports = function(){
         }
       }
     });
+	
+	//insert into laptops table 
+	router.post('', function (req, res){
+	var mysql = req.app.get('mysql');
+	var sql = "INSERT INTO laptops (`make`,`model`,`sn`,`purchase_date`,`warranty_end_date`,`cpu`,`ram`) VALUES (?,?,?,?,?,?,?)";
+	var inserts = [req.body.make_input, req.body.model_input, req.body.serial_input, req.body.purchase_date_input, req.body.warranty_date_input, req.body.cpu_input, req.body.ram_input];
+		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+		if(error){
+			res.write(JSON.stringify(error));
+			res.end();
+		}else{
+			res.redirect('/laptops');
+		}
+	});
+});
 
     return router;
 }();
-
-
-
-
 

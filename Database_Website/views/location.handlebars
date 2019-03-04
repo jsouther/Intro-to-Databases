@@ -6,7 +6,7 @@
     <p>This page is used to add or remove locations. <br>* Indicates required field.</p>
 
     <h3>Add Location</h3>
-    <form id="newAddress">
+    <form id="newAddress" action="/location" method="post">
       <fieldset>
         <label> Street Address:
           <input type="text" maxlength="100" name="address_input" id="address_input" required>
@@ -103,4 +103,4 @@
         {{/each}}
       </tbody>
     </table>
-	<script src="/static/js/pubLocations.js"></script>
+	

@@ -5,7 +5,7 @@
     <p>This page is used to add or remove laptops. <br>* Indicates required field.</p>
 
     <h3>Add Laptop</h3>
-    <form id="newLaptop">
+    <form id="newLaptop" action="/laptops" method="post">
       <fieldset>
         <label>Make:
           <select id="make_input" name="make_input" required>
@@ -107,5 +107,5 @@
         {{/each}}
       </tbody>
     </table>
-	<script src="/static/js/pubLaptops.js"></script>
+	
 	
