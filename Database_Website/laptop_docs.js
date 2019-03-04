@@ -26,6 +26,24 @@ module.exports = function(){
         }
       }
     });
+    
+    //insert into laptop_docs table 
+	router.post('', function (req, res){
+	var mysql = req.app.get('mysql');
+	var sql = "INSERT INTO laptop_docs (`title`, `doc_link`) VALUES (?,?)";
+	var inserts = [req.body.title_input, req.body.link_input];
+		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+		if(error){
+			res.write(JSON.stringify(error));
+			res.end();
+		}else{
+			res.redirect('/laptop_docs');
+		}
+	});
+});
+    
+    
+    
 
     return router;
 }();
