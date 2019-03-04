@@ -5,10 +5,10 @@
     <p>This page is used to add or remove peripherals. <br>* Indicates required field.</p>
 
     <h3>Add Peripheral</h3>
-    <form>
+    <form id="new_peripherals" action="/peripherals" method="post">
       <fieldset>
         <label>Equipment Type:
-          <select name="type_input" required>
+          <select name="type_input" id="type_input" required>
             <option hidden disabled disabled selected value> -- select an option -- </option>
             <option value="Keyboard">Keyboard</option>
             <option value="Mouse">Mouse</option>
@@ -20,18 +20,18 @@
         *</label><br>
 
         <!--<label> Asset Number:
-          <input type="text" maxlength="25" name="assetnum_input" required>
+          <input type="text" maxlength="25" name="assetnum_input" id="assetnum_input" required>
         *</label><br>-->
 
         <label> Make:
-          <input type="text" maxlength="25" name="make_input" required>
+          <input type="text" maxlength="25" name="make_input" id="make_input" required>
         *</label><br>
 
         <label>Model:
-          <input type="text" maxlength="25" name="model_input" required>
+          <input type="text" maxlength="25" name="model_input" id="model_input" required>
         *</label><br>
 
-        <input type="submit" value="Add Peripheral">
+        <input type="submit" id="add_peripheral" value="Add Peripheral">
       </fieldset>
     </form>
 

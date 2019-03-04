@@ -26,6 +26,24 @@ module.exports = function(){
         }
       }
     });
+	
+//insert into location table
+router.post('/', function (req, res){
+	var mysql = req.app.get('mysql');
+	var sql = "INSERT INTO location (`street_address`,`city`,`state`,`zip`) VALUES (?,?,?,?)";
+	var inserts = [req.body.address_input, req.body.city_input, req.body.state_input, req.body.zip_input];
+	sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+		if(error){
+			res.write(JSON.stringify(error));
+			res.end();
+		}else{
+			res.redirect('/location');
+		}
+	});
+});
+	
+	
 
     return router;
 }();
+

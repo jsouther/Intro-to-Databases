@@ -25,7 +25,25 @@ module.exports = function(){
           res.render('peripherals', context);
         }
       }
+	  });  
+	  
+	router.post('', function(req, res) {
+	var mysql = req.app.get('mysql');
+	var sql = "INSERT INTO peripherals(`equip_type`,`make`,`model`) VALUES (?,?,?)";
+	var inserts = [req.body.type_input, req.body.make_input, req.body.model_input] 
+			sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+		if(error){
+			res.write(JSON.stringify(error));
+			res.end();
+		}else{
+			res.redirect('/peripherals');
+		}
+	});
+
+	  
+	  
     });
+	
 
     return router;
 }();
