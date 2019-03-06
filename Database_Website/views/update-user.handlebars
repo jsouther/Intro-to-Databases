@@ -3,15 +3,15 @@
 <form id="update-user" action="/users" method="post">
       <fieldset>
         <label> First Name:
-          <input type="text" maxlength="50" name="fname_update" value="{{user.first_name}}" required>
+          <input type="text" maxlength="50" name="first_name" value="{{user.first_name}}" required>
         *</label><br>
 
         <label>Last Name:
-          <input type="text" maxlength="50" name="lname_update" value="{{user.last_name}}" required>
+          <input type="text" maxlength="50" name="last_name" value="{{user.last_name}}" required>
         *</label><br>
 
         <label>Department:
-          <select name="department_update" required>
+          <select name="department" required>
             <option value="{{user.department}}">{{user.department}}</option>
             <option value="Executive">Executive</option>
             <option value="Admin">Admin</option>
@@ -25,20 +25,20 @@
         *</label><br>
 
         <label>Job Title:
-          <input type="text" maxlength="75" name="title_update" value="{{user.job_title}}"" required>
+          <input type="text" maxlength="75" name="job_title" value="{{user.job_title}}"" required>
         *</label><br>
 
         <label>Phone Number:
-          <input type="tel" name="phone_update" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="{{user.pref_phone}}" required>
+          <input type="tel" name="pref_phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="{{user.pref_phone}}" required>
           <span>* Format: 1234567890</span>
         </label><br>
 
         <label>Email:
-          <input type="email" name="email_update" maxlength="65" value="{{user.pref_email}}" required>
+          <input type="email" name="pref_email" maxlength="65" value="{{user.pref_email}}" required>
         *</label><br>
 
         <label>Office:
-          <select name="location" id="location-selector" required>
+          <select name="home_office" id="location-selector" required>
             {{#each location}}
             <option value="{{Id}}">{{city}}</option>
             {{/each}}
