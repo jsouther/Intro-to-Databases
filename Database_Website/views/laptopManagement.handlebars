@@ -46,15 +46,16 @@
       </thead>
       <tbody>
         <tr>
-          <td>populate table from database</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button>Assign to user/Remove From User</button></td>
+          <td>{{sn}}</td>
+          <td>{{make}}</td>
+          <td>{{model}}</td>
+          <td>{{cpu}}</td>
+          <td>{{ram}}</td>
+          <td>{{pref_email}}</td>
+          <td>{{city}}</td>
+		  <td><button>Assign to user/Remove From User</button></td>
         </tr>
+		{{/each}}
       </tbody>
     </table>
 
@@ -70,14 +71,16 @@
         </tr>
       </thead>
       <tbody>
+	  {{#each laptops}}
         <tr>
-          <td>populate table from database</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{sn}}</td>
+          <td>{{make}}</td>
+          <td>{{model}}</td>
+          <td>{{cpu}}</td>
+          <td>{{ram}}</td>
           <td><button>Assign to user</button></td>
         </tr>
+		{{/each}}
       </tbody>
     </table>
 

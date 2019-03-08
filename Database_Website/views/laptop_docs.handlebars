@@ -5,7 +5,7 @@
     <p>This page is used to add or remove documentation. <br>* Indicates required field.</p>
 
     <h3>Add Documentation</h3>
-    <form>
+    <form id="new_laptop_doc" action="/laptop_docs" method="post">
       <fieldset>
         <label> Title:
           <input type="text" maxlength="100" name="title_input" required>
@@ -72,7 +72,7 @@
           <td>{{model}}</td>
           <td>{{title}}</td>
           <td>{{doc_link}}</td>
-          <td><button>Assign to user/Remove From User</button></td>
+          <td><button>Assign to laptop/Remove From laptop</button></td>
         </tr>
         {{/each}}
       </tbody>
