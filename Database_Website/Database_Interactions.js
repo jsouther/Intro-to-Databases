@@ -43,65 +43,6 @@ res.render('home');
 
 
 
-
-
-
-
-
-
-
-
-// //insert into laptopManagement table  
-// app.post('/laptopManagement',function(req,res,next){
-//   var context = {};
-//   var tableName=req.body.name; 
-//   var name=req.body.name;
-// var reps = req.body.reps;
-// var weight = req.body.weight;
-// var date = req.body.date;
-// var lbs = req.body.lbs;
-// console.log;
-  
-// mysql.pool.query("INSERT INTO ?(`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [tableName, name, reps, weight, date, lbs], function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = "Inserted id " + result.insertId;
-//     res.send(context.results);
-//   });
-
-	
-// });
-
-
-
-// //insert into documentation table  
-// app.post('/documentation',function(req,res,next){
-//   var context = {};
-//   var tableName=req.body.name; 
-//   var name=req.body.name;
-// var reps = req.body.reps;
-// var weight = req.body.weight;
-// var date = req.body.date;
-// var lbs = req.body.lbs;
-// console.log;
-  
-// mysql.pool.query("INSERT INTO ?(`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [tableName, name, reps, weight, date, lbs], function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = "Inserted id " + result.insertId;
-//     res.send(context.results);
-//   });
-
-	
-// });
-
-
-
-
 // //use to delete rows
 // app.delete('/',function(req,res,next){
 // 	console.log("I'm gonna delete somethign");
@@ -120,66 +61,6 @@ res.render('home');
 	
 // });
 
-
-// //use to update rows
-// app.put('/',function(req,res,next){
-// 	console.log("I'm gonna udpate");
-// 	var context = {};
-// 	console.log(req.body);
-// 	var id=req.body.id;
-// 	mysql.pool.query("UPDATE workouts SET name=(?), reps=(?), weight=(?), date=(?), lbs=(?)  WHERE id = (?)",[req.body.name, req.body.reps, req.body.weight, req.body.editDate, req.body.lbs, id],function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = "Deletedid " + result.deleteId;
-//     res.type('text/plain');
-// 	res.send(context.results);
-//   });
-	
-// });
-
-
-// //use to search
-// app.get('/getEntry', function(req,res,next){
-	
-// 	var context = {};
-// 	console.log(req.body.id);
-// 	var id=req.body.id;
-// 	mysql.pool.query("SELECT * FROM workouts WHERE id = (?)",[id],function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = JSON.stringify(result);
-//     res.type('text/plain');
-// 	console.log(context.results);
-// 	res.send(context.results);
-//   });
-	
-
-	
-	
-	
-// });
-
-// //adapted from https://oregonstate.instructure.com/courses/1692903/assignments/7357529?module_item_id=18260871
-// app.get('/reset-table',function(req,res,next){
-//   var context = {};
-//   mysql.pool.query("DROP TABLE IF EXISTS workouts", function(err){ 
-//     var createString = "CREATE TABLE workouts("+
-//     "id INT PRIMARY KEY AUTO_INCREMENT,"+
-//     "name VARCHAR(255) NOT NULL,"+
-//     "reps INT,"+
-//     "weight INT,"+
-//     "date DATE,"+
-//     "lbs BOOLEAN)";
-//     mysql.pool.query(createString, function(err){
-//       context.results = "Table reset";
-//       res.render('home',context);
-//     })
-//   });
-// });
 
 
 
