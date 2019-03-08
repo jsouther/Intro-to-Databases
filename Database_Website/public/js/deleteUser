@@ -1,0 +1,10 @@
+ function deleteUser(id){
+	$ajax({
+		url: '/users/' + Id,
+		type: 'DELETE',
+		success: function(result){
+			window.location.reload(true);
+		}
+	})
+};
+			

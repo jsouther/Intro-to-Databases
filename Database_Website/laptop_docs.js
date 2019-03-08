@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getLaptopDocs(res, mysql, context, complete){
-      mysql.pool.query("SELECT title, doc_link, laptops.make, laptops.model FROM laptop_docs LEFT JOIN laptops_laptopdocs ON laptops_laptopdocs.doc_id = laptop_docs.Id LEFT JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id" {
+      mysql.pool.query("SELECT title, doc_link, laptops.make, laptops.model FROM laptop_docs LEFT JOIN laptops_laptopdocs ON laptops_laptopdocs.doc_id = laptop_docs.Id LEFT JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id") {
 		  function(error, results, fields){
         if(error){
           res.write(JSON.stringify(error));
