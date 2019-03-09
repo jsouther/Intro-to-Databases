@@ -184,7 +184,7 @@ CREATE TABLE `peripherals` (
   `model` varchar(25) NOT Null,
   `assigned_user` int(11),
   KEY `assigned_user` (`assigned_user`),
-  CONSTRAINT `peripherals_ibfk_1` FOREIGN KEY (`assigned_user`) REFERENCES `users` (`Id`)
+  CONSTRAINT `peripherals_ibfk_1` FOREIGN KEY (`assigned_user`) REFERENCES `users` (`Id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

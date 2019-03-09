@@ -39,6 +39,10 @@ module.exports = function(){
             complete();
         });
     }
+	
+	
+
+	
 
     /*Route to display all users and populate location dropdowns*/
     router.get('/', function(req,res){
@@ -61,7 +65,7 @@ module.exports = function(){
     	var mysql = req.app.get('mysql');
     	var sql = "INSERT INTO users(`first_name`,`last_name`,`department`,`job_title`,`pref_phone`,`pref_email`,`home_office`) VALUES (?,?,?,?,?,?,?)";
     	var inserts = [req.body.fname_input, req.body.lname_input, req.body.department_input, req.body.title_input, req.body.phone_input, req.body.email_input, req.body.location] 
-    			sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+    		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
     		if(error){
     			res.write(JSON.stringify(error));
     			res.end();
@@ -70,6 +74,26 @@ module.exports = function(){
     		}
   	  });
     });
+	
+	
+		/*Route to search for a user*/
+	router.post('/search', function(req, res){
+		var context = {};
+		var mysql = req.app.get('mysql');
+		var sql = "SELECT users.Id, first_name, last_name, department, job_title, pref_phone, pref_email, location.city, location.state FROM users INNER JOIN location ON location.Id = users.home_office WHERE pref_email = ?";
+		var inserts = [req.body.email_search];
+	//	console.log(req.body.email_search);
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}else
+		//	console.log(results);
+			context.users = results;
+			res.render('users', context);
+		});
+	});
+	
 	
     /*Route to URL to display one user for updating*/
     router.get('/:Id', function(req, res){
@@ -87,6 +111,12 @@ module.exports = function(){
 
         }
     });
+	
+
+		
+	
+	
+	
 
     /*Route to URL that update data is sent in order to update a user*/
     router.put('/:Id', function(req, res){
@@ -113,15 +143,19 @@ module.exports = function(){
 /*Route to delete user*/
 router.delete('/:Id', function(req, res){
 	var mysql = req.app.get('mysql');
+	//console.log("DELETING!!");
 	var sql = "DELETE FROM users WHERE Id=?";
 	var inserts = [req.params.Id];
+	//console.log(req.params.Id);
 	sql = mysql.pool.query(sql,inserts,function(error, results, fields){
 		if(error){
+			console.log("error!!!!");
 			res.write(JSON.stringify(error));
 			res.status(400);
 			res.end();
 		}else{
 			res.status(202).end();
+		//	console.log("deleted");
 		}
 	})
 })

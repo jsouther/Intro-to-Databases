@@ -123,10 +123,11 @@
 
     <h3>All Users</h3>
 
-    <form>
+    <form action="/users/search" method="POST">
       <fieldset>
         <legend>Search User</legend>
-        <label> First Name:
+ {{!-- {{COMMENTED OUT Extra search fields}}      
+	   <label> First Name:
           <input type="text" maxlength="50" name="fname_search">
         </label><br>
 
@@ -156,16 +157,21 @@
           <input type="tel" name="phone_search" pattern="[0-9]{3}[0-9]{3][0-9]{4}" maxlength="10">
           <span>Format: 1234567890</span>
         </label><br>
-
+  --}}
         <label>Email:
           <input type="email" name="email_search" maxlength="65">
         </label><br>
-
+ {{!-- {{COMMENTED OUT Extra search fields}}  
         <label>Office:
-          <input type="text" name="office_search">
+          <select name="location">
+            {{#each location}}
+            <option value="{{Id}}">{{city}}</option>
+            {{/each}}
+          </select>
         </label><br>
-
+  --}}
         <input type="submit" value="Search">
+		<button type="button" onclick="window.location.href='/users'">Reset Search</button>
       </fieldset>
     </form><br>
     
