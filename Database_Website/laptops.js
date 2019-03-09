@@ -1,6 +1,7 @@
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
+    var helpers = require('handlebars-helpers')();
 
     function getLaptops(res, mysql, context, complete){
       mysql.pool.query("SELECT Id, make, model, sn, purchase_date, warranty_end_date, cpu, ram FROM laptops", function(error, results, fields){
@@ -23,6 +24,7 @@ module.exports = function(){
                 res.end();
             }
             context.laptop = results[0];
+            console.log(context.laptop);
             complete();
         });
     }

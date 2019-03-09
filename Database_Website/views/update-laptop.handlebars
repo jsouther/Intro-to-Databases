@@ -19,11 +19,11 @@
         *</label><br>
 
         <label>Purchase Date:
-          <input type="date" id="purchase_date" name="purchase_date" value="{{laptop.purchase_date}}" required>
+          <input type="date" id="purchase_date" name="purchase_date" value="{{moment laptop.purchase_date format="YYYY-MM-DD"}}" required>
         *</label><br>
 
         <label>Warranty End Date:
-          <input type="date" id="warranty_end_date" value="{{laptop.warranty_end_date}}" name="warranty_end_date">
+          <input type="date" id="warranty_end_date" name="warranty_end_date" value="{{moment laptop.warranty_end_date format="YYYY-MM-DD"}}">
         </label><br>
 
         <label>CPU:
