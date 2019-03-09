@@ -34,7 +34,7 @@
         *</label><br>
 
         <label>Phone Number:
-          <input type="tel" name="phone_input" pattern="[0-9]{3}[0-9]{3][0-9]{4}" maxlength="10" required>
+          <input type="tel" name="phone_input" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" required>
           <span>* Format: 1234567890</span>
         </label><br>
 
@@ -44,6 +44,7 @@
 
         <label>Office:
           <select name="location" required>
+          <option hidden disabled selected value> -- select an option -- </option>
             {{#each location}}
             <option value="{{Id}}">{{city}}</option>
             {{/each}}
@@ -186,8 +187,6 @@
             <td>Email</td>
             <td>City</td>
             <td>State</td>
-			<td>Update</td>
-			<td>Delete</td>
           </tr>
         </thead>
         <tbody>
@@ -201,7 +200,7 @@
             <td>{{pref_email}}</td>
             <td>{{city}}</td>
             <td>{{state}}</td>
-            <td><a href="/users/{{Id}}">Update User</a></td>
+            <td><a href="/users/{{Id}}">Edit User</a></td>
 			<td><button onclick="deleteUser({{Id}})">Delete</button></td>
           </tr>
           {{/each}}
