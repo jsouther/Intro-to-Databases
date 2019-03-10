@@ -59,10 +59,11 @@
 
     <h3>View/Search Laptops</h3>
 
-    <form>
+    <form action="/laptops/search" method="POST">
       <fieldset>
         <legend>Search for laptop</legend>
-        <label>Serial
+       {{!-- COMMENTED OUT extra search fields
+	   <label>Serial
           <input type="text" maxlength="25" name="serial_search">
         </label><br>
 
@@ -72,13 +73,14 @@
               <option value="Dell">Dell</option>
               <option value="HP">HP</option>
           </select>
-        </label><br>
+        </label>
+		--}}
 
         <label>Model
           <input type="text" maxlength="25" name="model_search">
         </label>
-
         <br><input type="submit" value="Search">
+		<button type="button" onclick="window.location.href='/laptops'">Reset Search</button>
 
       </fieldset>
     </form>

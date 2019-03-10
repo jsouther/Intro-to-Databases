@@ -58,6 +58,26 @@ module.exports = function(){
 	});
 });
 
+/*Route to search for a laptop*/
+	router.post('/search', function(req, res){
+		var context = {};
+		var mysql = req.app.get('mysql');
+		var sql = "SELECT Id, make, model, sn, purchase_date, warranty_end_date, cpu, ram FROM laptops WHERE model = ?";
+		var inserts = [req.body.model_search];
+		console.log(req.body.model_search);
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}else
+			console.log(results);
+			context.laptops = results;
+			res.render('laptops', context);
+		});
+	});
+
+
+
   //Route to URL to display one laptop for updating
     router.get('/:Id', function(req, res){
         callbackCount = 0;
