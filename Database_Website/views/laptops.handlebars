@@ -44,6 +44,7 @@
       </fieldset>
     </form>
 
+    {{!--COMMENTED OUT Don't need remove form, just use button in table
     <h3>Remove Laptop</h3>
       <form>
         <fieldset>
@@ -54,6 +55,7 @@
           <input type="submit" value="Remove Laptop">
         </fieldset>
       </form>
+      --}}
 
     <h3>View/Search Laptops</h3>
 
@@ -98,11 +100,12 @@
           <td>{{make}}</td>
           <td>{{model}}</td>
           <td>{{sn}}</td>
-          <td>{{purchase_date}}</td>
-          <td>{{warranty_end_date}}</td>
+          <td>{{moment purchase_date format="YYYY-MM-DD"}}</td>
+          <td>{{moment warranty_end_date format="YYYY-MM-DD"}}</td>
           <td>{{cpu}}</td>
           <td>{{ram}}</td>
-          <td><button>Assign to user/Remove From User</button></td>
+          <td><a href="/laptops/{{Id}}">Update Laptop</a></td>
+          <td><button>Delete</button></td>
         </tr>
         {{/each}}
       </tbody>

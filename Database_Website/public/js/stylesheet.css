@@ -1,5 +1,11 @@
 table, th, td{
   border-style:solid;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+table{
+  table-layout: fixed; width: 80%
 }
 
 body{

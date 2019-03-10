@@ -26,7 +26,7 @@ module.exports = function(){
         });
     }
 
-    /*Get specific user info for person of updating user*/
+    /*Get specific user info for purpose of updating user*/
     function getUser(res, mysql, context, Id, complete){
         var sql = "SELECT Id, first_name, last_name, department, job_title, pref_phone, pref_email, home_office FROM users WHERE Id = ?";
         var inserts = [Id];
