@@ -8,4 +8,19 @@
 		}
 	})
 };
+
+ function deleteLocation(Id){
+	$.ajax({
+		url: '/location/' + Id,
+		type: 'DELETE',
+		success: function(result){
+			console.log("delete");
+			console.log(Id);
+			window.location.reload(true);
+		}
+	})
+};
+
+
+
 			

@@ -155,7 +155,7 @@ CREATE TABLE `users` (
   `assigned_laptop` int(11),
   KEY `home_office` (`home_office`),
   KEY `assigned_laptop` (`assigned_laptop`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`home_office`) REFERENCES `location` (`Id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`home_office`) REFERENCES `location` (`Id`) ON DELETE CASCADE,
   CONSTRAINT `users_ibfk_2` FOREIGN KEY (`assigned_laptop`) REFERENCES `laptops` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
