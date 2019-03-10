@@ -48,7 +48,7 @@ module.exports = function(){
     router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
-      context.jsscripts = ["deleteUser.js"];
+      context.jsscripts = ["deleteFunctions.js"];
       var mysql = req.app.get('mysql');
       getUsers(res, mysql, context, complete);
       getLocations(res, mysql, context, complete);

@@ -89,8 +89,8 @@ CREATE TABLE `laptops_laptopdocs` (
   `doc_id` int(11) NOT NULL,
   KEY `lt_id` (`lt_id`,`doc_id`),
   KEY `doc_id` (`doc_id`),
-  CONSTRAINT ltID FOREIGN KEY (`lt_id`) REFERENCES `laptops` (`Id`),
-  CONSTRAINT docID FOREIGN KEY (`doc_id`) REFERENCES `laptop_docs` (`Id`)
+  CONSTRAINT ltID FOREIGN KEY (`lt_id`) REFERENCES `laptops` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT docID FOREIGN KEY (`doc_id`) REFERENCES `laptop_docs` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -156,7 +156,7 @@ CREATE TABLE `users` (
   KEY `home_office` (`home_office`),
   KEY `assigned_laptop` (`assigned_laptop`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`home_office`) REFERENCES `location` (`Id`) ON DELETE CASCADE,
-  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`assigned_laptop`) REFERENCES `laptops` (`Id`)
+  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`assigned_laptop`) REFERENCES `laptops` (`Id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
