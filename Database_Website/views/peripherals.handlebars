@@ -31,6 +31,15 @@
           <input type="text" maxlength="25" name="model_input" id="model_input" required>
         *</label><br>
 
+        <label>User:
+          <select name="user">
+          <option hidden disabled selected value> -- select an option -- </option>
+            {{#each user}}
+            <option value="{{Id}}">{{pref_email}}</option>
+            {{/each}}
+          </select>
+        </label><br>
+
         <input type="submit" id="add_peripheral" value="Add Peripheral">
       </fieldset>
     </form>
@@ -90,7 +99,7 @@
             <td>{{model}}</td>
             <td>{{first_name}}</td>
             <td>{{last_name}}</td>
-            <td><button>Change User</button></td>
+            <td><a href="/peripherals/{{Id}}">Edit Peripheral</a></td>
             <td><button onclick="deletePeripheral({{Id}})">Delete</button></td>
           </tr>
           {{/each}}

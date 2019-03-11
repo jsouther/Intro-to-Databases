@@ -2,6 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+
     /* Get user info to display table of users*/
     function getUsers(res, mysql, context, complete){
       mysql.pool.query("SELECT users.Id, first_name, last_name, department, job_title, pref_phone, pref_email, location.city, location.state FROM users INNER JOIN location ON location.Id = users.home_office", function(error, results, fields){
@@ -14,6 +15,7 @@ module.exports = function(){
       });
     }
 
+
     /*Get location info to display locations in dropdown menus*/
    function getLocations(res, mysql, context, complete){
         mysql.pool.query("SELECT Id, city FROM location", function(error, results, fields){
@@ -25,6 +27,7 @@ module.exports = function(){
             complete();
         });
     }
+
 
     /*Get specific user info for purpose of updating user*/
     function getUser(res, mysql, context, Id, complete){
@@ -39,10 +42,7 @@ module.exports = function(){
             complete();
         });
     }
-	
-	
 
-	
 
     /*Route to display all users and populate location dropdowns*/
     router.get('/', function(req,res){
@@ -60,6 +60,7 @@ module.exports = function(){
       }
     });
 	
+
     /*Route to add a user, redirects to users page*/
   	router.post('', function(req, res) {
     	var mysql = req.app.get('mysql');
@@ -76,7 +77,7 @@ module.exports = function(){
     });
 	
 	
-		/*Route to search for a user*/
+	/*Route to search for a user*/
 	router.post('/search', function(req, res){
 		var context = {};
 		var mysql = req.app.get('mysql');
@@ -108,14 +109,8 @@ module.exports = function(){
             if(callbackCount >= 2){
                 res.render('update-user', context);
             }
-
         }
-    });
-	
-
-		
-	
-	
+    });	
 	
 
     /*Route to URL that update data is sent in order to update a user*/
@@ -138,27 +133,25 @@ module.exports = function(){
     });
 
 
-
-
-/*Route to delete user*/
-router.delete('/:Id', function(req, res){
-	var mysql = req.app.get('mysql');
-	//console.log("DELETING!!");
-	var sql = "DELETE FROM users WHERE Id=?";
-	var inserts = [req.params.Id];
-	//console.log(req.params.Id);
-	sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-		if(error){
-			console.log("error!!!!");
-			res.write(JSON.stringify(error));
-			res.status(400);
-			res.end();
-		}else{
-			res.status(202).end();
-		//	console.log("deleted");
-		}
-	})
-})
+    /*Route to delete user*/
+    router.delete('/:Id', function(req, res){
+    	var mysql = req.app.get('mysql');
+    	//console.log("DELETING!!");
+    	var sql = "DELETE FROM users WHERE Id=?";
+    	var inserts = [req.params.Id];
+    	//console.log(req.params.Id);
+    	sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+    		if(error){
+    			console.log("error!!!!");
+    			res.write(JSON.stringify(error));
+    			res.status(400);
+    			res.end();
+    		}else{
+    			res.status(202).end();
+    		//	console.log("deleted");
+    		}
+    	})
+    })
 
     return router;
 }();
