@@ -5,9 +5,13 @@ table, th, td{
 }
 
 table{
-  table-layout: fixed; width: 80%
+  table-layout: fixed; width: 95%
 }
 
 body{
 background-color: #4682b4;
+}
+
+input[id~="long"]{
+  width: 45%;
 }

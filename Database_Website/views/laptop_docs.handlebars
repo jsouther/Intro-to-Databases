@@ -8,11 +8,11 @@
     <form id="new_laptop_doc" action="/laptop_docs" method="post">
       <fieldset>
         <label> Title:
-          <input type="text" maxlength="100" name="title_input" required>
+          <input type="text" maxlength="100" name="title_input" id="long" required>
         *</label><br>
 
         <label> Document Web Link:
-          <input type="text" maxlength="255" name="link_input" required>
+          <input type="text" maxlength="255" name="link_input" id="long" required>
         *</label><br>
 
         <label>PC Make:
@@ -72,7 +72,7 @@
           <td>{{model}}</td>
           <td>{{title}}</td>
           <td>{{doc_link}}</td>
-          <td><button>Assign to laptop/Remove From laptop</button></td>
+          <td><a href="/laptop_docs/{{Id}}">Edit Document</a></td>
 		  <td><button onclick="deleteLaptopDoc({{Id}})">Delete</button></td>
         </tr>
         {{/each}}
