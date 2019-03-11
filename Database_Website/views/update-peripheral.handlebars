@@ -1,10 +1,10 @@
 <h1>Update {{peripheral.make}} {{peripheral.model}}:</h1>
 
-<form id="update-user" action="/users" method="post">
+<form id="update-peripheral" action="/peripherals" method="post">
       <fieldset>
         <label>Equipment Type:
-          <select name="type_input" id="type_input" required>
-            <option hidden disabled disabled selected value> -- select an option -- </option>
+          <select name="equip_type" required>
+            <option value="{{peripheral.equip_type}}">{{peripheral.equip_type}}</option>           
             <option value="Keyboard">Keyboard</option>
             <option value="Mouse">Mouse</option>
             <option value="Webcam">Webcam</option>
@@ -15,24 +15,23 @@
         *</label><br>
 
         <label> Make:
-          <input type="text" maxlength="25" name="make_input" id="make_input" required>
+          <input type="text" maxlength="25" name="make" value="{{peripheral.make}}" required>
         *</label><br>
 
         <label>Model:
-          <input type="text" maxlength="25" name="model_input" id="model_input" required>
+          <input type="text" maxlength="25" name="model" value="{{peripheral.model}}" required>
         *</label><br>
 
         <label>User:
-          <select name="user">
-          <option hidden disabled selected value> -- select an option -- </option>
+          <select name="assigned_user" id="user-selector">
             {{#each user}}
             <option value="{{Id}}">{{pref_email}}</option>
             {{/each}}
           </select>
         </label><br>
 
-        <button onclick="updateUser({{user.Id}})">Edit User</button>
+        <button onclick="updatePeripheral({{peripheral.Id}})">Update Peripheral</button>
       </fieldset>
     </form>
     
-    <script>selectLocation({{user.home_office}});</script>
+    <script>selectUser({{peripheral.assigned_user}});</script>

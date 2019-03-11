@@ -60,8 +60,8 @@ module.exports = function(){
     /* Route to add peripheral*/
   	router.post('', function(req, res) {
       var mysql = req.app.get('mysql');
-      var sql = "INSERT INTO peripherals(`equip_type`,`make`,`model`) VALUES (?,?,?)";
-      var inserts = [req.body.type_input, req.body.make_input, req.body.model_input] 
+      var sql = "INSERT INTO peripherals(`equip_type`,`make`,`model`, `assigned_user`) VALUES (?,?,?,?)";
+      var inserts = [req.body.type_input, req.body.make_input, req.body.model_input, req.body.assigned_user_input] 
       		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
         	if(error){
         		res.write(JSON.stringify(error));
@@ -77,7 +77,7 @@ module.exports = function(){
     router.get('/:Id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["updatePeripheral.js", "users.js"];
+        context.jsscripts = ["updatePeripheral.js", "selectedUser.js"];
         var mysql = req.app.get('mysql');
         getPeripheral(res, mysql, context, req.params.Id, complete);
         getUsers(res, mysql, context, complete);
