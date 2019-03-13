@@ -45,8 +45,20 @@
           </select>
         *</label><br>
 
-        <button onclick="updateUser({{user.Id}})">Edit User</button>
+        <label>Laptop Serial Number:
+          <select name="assigned_laptop" id="laptop-selector" required>
+          <option value="NULL">No Laptop</option>
+            {{#each laptop}}
+            <option value="{{Id}}">{{sn}}</option>
+            {{/each}}
+          </select>
+        </label><br>
+
+        <button onclick="updateUser({{user.Id}})">Update User</button>
       </fieldset>
     </form>
     
-    <script>selectLocation({{user.home_office}});</script>
+    <script>
+      selectLocation({{user.home_office}});
+      selectLaptop({{user.assigned_laptop}});
+    </script>

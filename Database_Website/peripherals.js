@@ -47,7 +47,7 @@ module.exports = function(){
       context.jsscripts = ["deleteFunctions.js"];
       var mysql = req.app.get('mysql');
       getPeripherals(res, mysql, context, complete);
-      getUsers(res, mysql, context, complete)
+      getUsers(res, mysql, context, complete);
       function complete(){
         callbackCount++;
         if(callbackCount >= 2){

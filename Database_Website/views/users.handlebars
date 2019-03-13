@@ -51,6 +51,16 @@
           </select>
         *</label><br>
 
+        <label>Laptop Serial Number:
+          <select name="laptop_input" id="laptop_input" required>
+          <option hidden disabled selected value> -- select an option -- </option>
+          <option value="NULL">No Laptop</option>
+            {{#each laptop}}
+            <option value="{{Id}}">{{sn}}</option>
+            {{/each}}
+          </select>
+        </label><br>
+
         <input type="submit" value="Add User">
       </fieldset>
     </form>
@@ -120,6 +130,7 @@
             <td>Email</td>
             <td>City</td>
             <td>State</td>
+            <td>Laptop SN</td>
           </tr>
         </thead>
         <tbody>
@@ -133,6 +144,7 @@
             <td>{{pref_email}}</td>
             <td>{{city}}</td>
             <td>{{state}}</td>
+            <td>{{sn}}</td>
             <td><a href="/users/{{Id}}">Edit User</a></td>
 			<td><button onclick="deleteUser({{Id}})">Delete</button></td>
           </tr>
