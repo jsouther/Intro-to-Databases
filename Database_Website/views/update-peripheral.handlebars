@@ -15,22 +15,23 @@
         *</label><br>
 
         <label> Make:
-          <input type="text" maxlength="25" name="make" value="{{peripheral.make}}" required>
+          <input type="text" maxlength="25" name="make" id="make" value="{{peripheral.make}}" required>
         *</label><br>
 
         <label>Model:
-          <input type="text" maxlength="25" name="model" value="{{peripheral.model}}" required>
+          <input type="text" maxlength="25" name="model" id="model" value="{{peripheral.model}}" required>
         *</label><br>
 
         <label>User:
           <select name="assigned_user" id="user-selector">
+            <option value="NULL">No User</option>
             {{#each user}}
             <option value="{{Id}}">{{pref_email}}</option>
             {{/each}}
           </select>
         </label><br>
 
-        <button onclick="updatePeripheral({{peripheral.Id}})">Update Peripheral</button>
+        <button type="button" id="sumbitbutton" onclick="updatePeripheral({{peripheral.Id}})">Update Peripheral</button>
       </fieldset>
     </form>
     

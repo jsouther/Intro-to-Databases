@@ -60,6 +60,12 @@ module.exports = function(){
     /* Route to add peripheral*/
   	router.post('', function(req, res) {
       var mysql = req.app.get('mysql');
+      console.log(req.body.assigned_user_input)
+      if (req.body.assigned_user_input == "NULL") {
+        req.body.assigned_user_input = null;
+      }
+      console.log(req.body)
+        console.log(req.params.Id)
       var sql = "INSERT INTO peripherals(`equip_type`,`make`,`model`, `assigned_user`) VALUES (?,?,?,?)";
       var inserts = [req.body.type_input, req.body.make_input, req.body.model_input, req.body.assigned_user_input] 
       		sql = mysql.pool.query(sql,inserts,function(error, results, fields){
@@ -93,6 +99,10 @@ module.exports = function(){
     /*Route to URL that update data is sent in order to update a peripheral*/
     router.put('/:Id', function(req, res){
         var mysql = req.app.get('mysql');
+        
+        if (req.body.assigned_user == "NULL") {
+        req.body.assigned_user = null;
+        }
         console.log(req.body)
         console.log(req.params.Id)
         var sql = "UPDATE peripherals SET equip_type=?, make=?, model=?, assigned_user=? WHERE Id=?";
