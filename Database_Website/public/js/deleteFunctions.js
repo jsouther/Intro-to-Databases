@@ -57,7 +57,22 @@
 	})
 };
 
+function displayPopup(){
+	 var modal = document.getElementById('assignLtModal');
+	 modal.style.display = "block";
+	
+}
 
+function assgnDocToLt(Id) {
+    $.ajax({
+        url: '/laptop_laptopdocs/' + Id,
+        type: 'POST',
+        data: $('#update-document').serialize(),
+        success: function(result){
+            window.location.replace("./");
+        }
+    })
+};
 
 
 

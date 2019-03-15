@@ -4,7 +4,7 @@ module.exports = function(){
 
     /* Get document info to display table of documents*/
    	function getLaptopDocs(res, mysql, context, complete){
-      mysql.pool.query("SELECT laptop_docs.Id, title, doc_link, laptops.make, laptops.model FROM laptop_docs LEFT JOIN laptops_laptopdocs ON laptops_laptopdocs.doc_id = laptop_docs.Id LEFT JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id", function(error, results, fields){
+      mysql.pool.query("SELECT Id, title, doc_link FROM laptop_docs", function(error, results, fields){
         if(error){
           res.write(JSON.stringify(error));
           res.end();
