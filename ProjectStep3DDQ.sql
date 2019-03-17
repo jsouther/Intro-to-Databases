@@ -62,7 +62,7 @@ INSERT INTO `laptops` (`make`, `model`, `sn`, `purchase_date`, `warranty_end_dat
 --
 
 CREATE TABLE `laptop_docs` (
-  `Id` int(11) NOT NULL Primary Key AUTO_INCREMENT,
+  `Id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `doc_link` varchar(255) NOT NULL,
   KEY `Id` (`Id`)
@@ -152,11 +152,11 @@ CREATE TABLE `users` (
   `pref_phone` varchar(12) NOT NULL,
   `pref_email` varchar(65) NOT NULL UNIQUE,
   `home_office` int(11) NOT NULL,
-  `assigned_laptop` int(11),
-  KEY `home_office` (`home_office`),
-  KEY `assigned_laptop` (`assigned_laptop`),
+  `assigned_laptop` int(11) UNIQUE,
+  -- FOREIGN KEY `home_office` (`home_office`),
+  -- FOREIGN KEY `assigned_laptop` (`assigned_laptop`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`home_office`) REFERENCES `location` (`Id`) ON DELETE CASCADE,
-  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`assigned_laptop`) REFERENCES `laptops` (`Id`) ON DELETE SET NULL
+  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`assigned_laptop`) REFERENCES `laptops` (`Id`) ON DELETE SET NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -169,7 +169,7 @@ INSERT INTO `users` (`first_name`, `last_name`, `department`, `job_title`, `pref
 ('Mary', 'Contrary', 'Sales', 'Coordinator', '555-77-6666', 'mary@quite.com', 1, 2),
 ('Greg', 'Merlot', 'Executive', 'CEO', '999-11-1111', 'Greg@imaceo.com', 4, 3),
 ('Bill', 'Stone', 'Sales', 'Sales Executive', '123-45-6789', 'bill@pebkac.com', 3, 4),
-('Pichu', 'Pokemon', 'Operations', 'Electrician', '978-444-4578', 'zapper@niantic.com', 4, 5);
+('Pichu', 'Pokemon', 'Operations', 'Electrician', '978-444-4578', 'zapper@niantic.com', 4, NULL);
 
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `peripherals` (
   `Id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `equip_type` varchar(10) NOT NULL,
   `make` varchar(25) NOT NULL,
-  `model` varchar(25) NOT Null,
+  `model` varchar(25) NOT NULL,
   `assigned_user` int(11),
   KEY `assigned_user` (`assigned_user`),
   CONSTRAINT `peripherals_ibfk_1` FOREIGN KEY (`assigned_user`) REFERENCES `users` (`Id`) ON DELETE SET NULL

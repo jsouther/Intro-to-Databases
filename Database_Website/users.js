@@ -30,7 +30,7 @@ module.exports = function(){
 
     /*Get laptop info to display laptops in dropdown menus*/
    function getLaptops(res, mysql, context, complete){
-        mysql.pool.query("SELECT Id, sn FROM laptops", function(error, results, fields){
+        mysql.pool.query("SELECT laptops.Id, sn, users.assigned_laptop FROM laptops left JOIN users ON laptops.Id = users.assigned_laptop WHERE users.assigned_laptop IS NULL", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
