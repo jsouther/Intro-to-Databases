@@ -1,10 +1,14 @@
-
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
 
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
 	
 
+/*function to get all laptops and their assigned user*/
 function getLaptops(res, mysql, context, complete){
 	mysql.pool.query("SELECT laptops.Id, laptops.make, laptops.model, laptops.sn, users.first_name, users.last_name FROM laptops INNER JOIN users ON laptops.Id = users.assigned_laptop ORDER BY Id", function(error, results, fields){
 		if(error){
@@ -17,6 +21,7 @@ function getLaptops(res, mysql, context, complete){
 	});
 }
 
+/*function to get all laptop docs*/
 function getDocuments(res, mysql, context, complete){
 	mysql.pool.query("SELECT Id, title FROM laptop_docs", function(error, results, fields){
 		if(error){
@@ -31,8 +36,7 @@ function getDocuments(res, mysql, context, complete){
 
 
 
-
-
+/*function to get all laptops and their associated docs*/
 function getAssignments(res, mysql, context, complete){
 	mysql.pool.query("SELECT laptops.Id AS LaptopId, laptops_laptopdocs.Id, laptops.make, laptops.model, laptops.sn, laptop_docs.title FROM laptops INNER JOIN laptops_laptopdocs ON laptops.Id = laptops_laptopdocs.lt_id INNER JOIN laptop_docs ON laptop_docs.Id = laptops_laptopdocs.doc_id ORDER BY laptops.Id", function(error, results, fields){
 	if(error){
@@ -45,11 +49,9 @@ function getAssignments(res, mysql, context, complete){
 	});
 }
 
-
-
 	
 	
-	    /*Route to display page*/
+/*Route to display page*/
     router.get('/', function(req,res){
 		var callbackCount = 0;
 		var context = {};
@@ -70,7 +72,7 @@ function getAssignments(res, mysql, context, complete){
 
 	
    
-   //insert into laptop_laptopdocs table 
+//Route to insert into laptop_laptopdocs table 
 	router.post('', function (req, res){
 	var mysql = req.app.get('mysql');
 	var sql = "INSERT INTO laptops_laptopdocs (`lt_id`, `doc_id`) VALUES (?,?)";
@@ -87,7 +89,7 @@ function getAssignments(res, mysql, context, complete){
  
     
     
-	    /*Route to delete laptop/document relation*/
+/*Route to delete laptop/document relation*/
     router.delete('/:Id', function(req, res){
     	var mysql = req.app.get('mysql');
     	//console.log("DELETING!!");

@@ -1,3 +1,8 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
 function updateUser(Id){
     $.ajax({
         url: '/users/' + Id,

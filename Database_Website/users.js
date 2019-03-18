@@ -1,9 +1,14 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
 
-    /* Get user info to display table of users*/
+/*function to get user info to display table of users*/
     function getUsers(res, mysql, context, complete){
       mysql.pool.query("SELECT users.Id, first_name, last_name, department, job_title, pref_phone, pref_email, location.city, location.state, laptops.sn FROM users INNER JOIN location ON location.Id = users.home_office LEFT JOIN laptops on laptops.Id = users.assigned_laptop", function(error, results, fields){
         if(error){
@@ -16,7 +21,7 @@ module.exports = function(){
     }
 
 
-/*Get location info to display locations in dropdown menus*/
+/*function to get location info to display locations in dropdown menus*/
    function getLocations(res, mysql, context, complete){
         mysql.pool.query("SELECT Id, city FROM location", function(error, results, fields){
             if(error){
@@ -28,7 +33,7 @@ module.exports = function(){
         });
     }
 
-    /*Get laptop info to display laptops in dropdown menus*/
+ /*function to get available laptop info to display laptops in dropdown menus*/
    function getLaptops(res, mysql, context, complete){
         mysql.pool.query("SELECT laptops.Id, sn, users.assigned_laptop FROM laptops left JOIN users ON laptops.Id = users.assigned_laptop WHERE users.assigned_laptop IS NULL", function(error, results, fields){
             if(error){
@@ -41,7 +46,7 @@ module.exports = function(){
     }
 
 
-    /*Get specific user info for purpose of updating user*/
+ /*function to get specific user info for purpose of updating user*/
     function getUser(res, mysql, context, Id, complete){
         var sql = "SELECT Id, first_name, last_name, department, job_title, pref_phone, pref_email, home_office, assigned_laptop FROM users WHERE Id = ?";
         var inserts = [Id];
@@ -56,7 +61,7 @@ module.exports = function(){
     }
 
 
-    /*Route to display all users and populate location dropdowns*/
+/*Route to display all users and populate location dropdowns*/
     router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
@@ -74,7 +79,7 @@ module.exports = function(){
     });
 	
 
-    /*Route to add a user, redirects to users page*/
+/*Route to add a user, redirects to users page*/
   	router.post('', function(req, res) {
     	var mysql = req.app.get('mysql');
         if (req.body.laptop_input == "NULL") {
@@ -93,7 +98,7 @@ module.exports = function(){
     });
 	
 	
-	/*Route to search for a user*/
+/*Route to search for a user by email*/
 	router.post('/search', function(req, res){
 		var context = {};
 		var mysql = req.app.get('mysql');
@@ -112,7 +117,7 @@ module.exports = function(){
 	});
 	
 	
-    /*Route to URL to display one user for updating*/
+ /*Route to URL to display one user for updating*/
     router.get('/:Id', function(req, res){
         callbackCount = 0;
         var context = {};
@@ -130,7 +135,7 @@ module.exports = function(){
     });	
 	
 
-    /*Route to URL that update data is sent in order to update a user*/
+/*Route to URL that update data is sent in order to update a user*/
     router.put('/:Id', function(req, res){
         var mysql = req.app.get('mysql');
         if (req.body.assigned_laptop == "NULL") {
@@ -153,7 +158,7 @@ module.exports = function(){
     });
 
 
-    /*Route to delete user*/
+ /*Route to delete user*/
     router.delete('/:Id', function(req, res){
     	var mysql = req.app.get('mysql');
     	//console.log("DELETING!!");

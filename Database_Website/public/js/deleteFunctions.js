@@ -1,3 +1,10 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/ 
+ 
+ 
+//delete user by id 
  function deleteUser(Id){
 	$.ajax({
 		url: '/users/' + Id,
@@ -9,6 +16,7 @@
 	})
 };
 
+//delete Location by id
  function deleteLocation(Id){
 	$.ajax({
 		url: '/location/' + Id,
@@ -21,6 +29,7 @@
 	})
 };
 
+//delete laptop by id
  function deleteLaptop(Id){
 	$.ajax({
 		url: '/laptops/' + Id,
@@ -33,6 +42,7 @@
 	})
 };
 
+ //delete laptop Doc by ID
  function deleteLaptopDoc(Id){
 	$.ajax({
 		url: '/laptop_docs/' + Id,
@@ -45,6 +55,7 @@
 	})
 };
 
+//delete perpherial by id
  function deletePeripheral(Id){
 	$.ajax({
 		url: '/peripherals/' + Id,
@@ -57,6 +68,7 @@
 	})
 };
 
+//delete laptop/doc relationship by id
  function deleteLtDocRelation(Id){
 	$.ajax({
 		url: '/laptop_laptopdocs/' + Id,

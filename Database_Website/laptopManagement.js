@@ -1,7 +1,16 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
+/*THE FUNCTIONS ON THIS PAGE WERE ADDED TO OTHER PAGES, THIS PAGE IS NOT DISPLAYED*/
+
+
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+/*function to get laptop, user and location*/
     function getLaptopMgmt(res, mysql, context, complete){
 	mysql.pool.query("SELECT sn, make, model, ram, cpu, users.pref_email, location.city FROM laptops LEFT JOIN users ON laptops.Id = users.assigned_laptop LEFT JOIN location ON users.home_office =location.id", function(error, results, fields){
        if(error){
@@ -16,7 +25,8 @@ module.exports = function(){
 
 	}
 
-    router.get('/', function(req,res){
+/*Route to display laptopManagement page*/
+	router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
       //context.jsscripts = []

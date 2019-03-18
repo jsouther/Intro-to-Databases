@@ -1,8 +1,14 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
     var helpers = require('handlebars-helpers')();
 
+/*function to get laptops*/
     function getLaptops(res, mysql, context, complete){
       mysql.pool.query("SELECT Id, make, model, sn, purchase_date, warranty_end_date, cpu, ram FROM laptops", function(error, results, fields){
         if(error){
@@ -14,7 +20,7 @@ module.exports = function(){
       });
     }
 
-    //Get specific laptop info for purpose of updating laptop
+/*function to get specific laptop info for purpose of updating laptop */
     function getLaptop(res, mysql, context, Id, complete){
         var sql = "SELECT Id, make, model, sn, purchase_date, warranty_end_date, cpu, ram FROM laptops WHERE Id = ?";
         var inserts = [Id];
@@ -29,6 +35,7 @@ module.exports = function(){
         });
     }
 
+/*Router to display page*/
     router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
@@ -43,7 +50,8 @@ module.exports = function(){
       }
     });
 	
-	//insert into laptops table 
+
+/*router to insert into laptops table*/ 
 	router.post('', function (req, res){
 	var mysql = req.app.get('mysql');
 	var sql = "INSERT INTO laptops (`make`,`model`,`sn`,`purchase_date`,`warranty_end_date`,`cpu`,`ram`) VALUES (?,?,?,?,?,?,?)";
@@ -58,7 +66,7 @@ module.exports = function(){
 	});
 });
 
-/*Route to search for a laptop*/
+/*Route to search for a laptop by model*/
 	router.post('/search', function(req, res){
 		var context = {};
 		var mysql = req.app.get('mysql');
@@ -78,7 +86,7 @@ module.exports = function(){
 
 
 
-  //Route to URL to display one laptop for updating
+ //Route to URL to display one laptop for updating
     router.get('/:Id', function(req, res){
         callbackCount = 0;
         var context = {};
@@ -94,7 +102,7 @@ module.exports = function(){
         }
     });
 
-    /*Route to URL that update data is sent in order to update a laptop*/
+ /*Route to URL that update data is sent in order to update a laptop*/
     router.put('/:Id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)

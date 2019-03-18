@@ -1,8 +1,13 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-    /* Get locations info to display table of locations*/
+ /*function to get locations info to display table of locations*/
     function getLocations(res, mysql, context, complete){
       mysql.pool.query("SELECT Id, street_address, city, state, zip FROM location", function(error, results, fields){
         if(error){
@@ -14,7 +19,7 @@ module.exports = function(){
       });
     }
 
-    /*Get specific location info for purpose of updating location*/
+ /*function to get specific location info for purpose of updating location*/
     function getLocation(res, mysql, context, Id, complete){
         var sql = "SELECT Id, street_address, city, state, zip FROM location WHERE Id = ?";
         var inserts = [Id];
@@ -28,7 +33,7 @@ module.exports = function(){
         });
     }
 
-    /*Route to display all locations*/
+ /*Route to display all locations*/
     router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
@@ -43,7 +48,7 @@ module.exports = function(){
       }
     });
 	
-    //insert into location table
+//route to insert into location table
     router.post('/', function (req, res){
       var mysql = req.app.get('mysql');
       var sql = "INSERT INTO location (`street_address`,`city`,`state`,`zip`) VALUES (?,?,?,?)";
@@ -58,7 +63,7 @@ module.exports = function(){
       });
     });
 
-    /*Route to URL to display one user for updating*/
+ /*Route to URL to display one user for updating*/
     router.get('/:Id', function(req, res){
       callbackCount = 0;
       var context = {};
@@ -73,7 +78,7 @@ module.exports = function(){
       }
     }); 
 
-    /*Route to URL that update data is sent in order to update a user*/
+/*Route to URL that update data is sent in order to update a user*/
     router.put('/:Id', function(req, res){
       var mysql = req.app.get('mysql');
       console.log(req.body)

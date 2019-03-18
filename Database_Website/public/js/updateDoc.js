@@ -1,3 +1,8 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
 function updateDocument(Id){
     $.ajax({
         url: '/laptop_docs/' + Id,

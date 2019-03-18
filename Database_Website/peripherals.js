@@ -1,8 +1,14 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
+
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-    /* Get peripheral info to display table of peripherals*/
+ /* function to get peripheral info to display table of peripherals*/
     function getPeripherals(res, mysql, context, complete){
       mysql.pool.query("SELECT peripherals.Id, equip_type, make, model, users.first_name, users.last_name FROM peripherals LEFT JOIN users ON users.Id = peripherals.assigned_user ORDER BY peripherals.Id ASC", function(error, results, fields){
         if(error){
@@ -14,7 +20,7 @@ module.exports = function(){
       });
     }
 
-     /* Get user info to display users in dropdown menus*/
+ /* function to get user info to display users in dropdown menus*/
     function getUsers(res, mysql, context, complete){
       mysql.pool.query("SELECT Id, first_name, last_name, pref_email FROM users", function(error, results, fields){
         if(error){
@@ -26,7 +32,7 @@ module.exports = function(){
       });
     }
 
-    /*Get specific peripheral info for purpose of updating peripheral*/
+ /*function to get specific peripheral info for purpose of updating peripheral*/
     function getPeripheral(res, mysql, context, Id, complete){
         var sql = "SELECT Id, equip_type, make, model, assigned_user FROM peripherals WHERE Id = ?";
         var inserts = [Id];
@@ -40,7 +46,7 @@ module.exports = function(){
         });
     }
 
-    /*Route to display peripherals*/
+   /*Route to display peripherals*/
     router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
@@ -57,7 +63,7 @@ module.exports = function(){
 	  });  
 	 
 
-    /* Route to add peripheral*/
+   /* Route to add peripheral*/
   	router.post('', function(req, res) {
       var mysql = req.app.get('mysql');
       console.log(req.body.assigned_user_input)
@@ -79,7 +85,7 @@ module.exports = function(){
     });
 	
 
-    /*Route to URL to display one peripheral for updating*/
+ /*Route to URL to display one peripheral for updating*/
     router.get('/:Id', function(req, res){
         callbackCount = 0;
         var context = {};
@@ -96,7 +102,7 @@ module.exports = function(){
     }); 
 
     
-    /*Route to URL that update data is sent in order to update a peripheral*/
+  /*Route to URL that update data is sent in order to update a peripheral*/
     router.put('/:Id', function(req, res){
         var mysql = req.app.get('mysql');
         
@@ -120,7 +126,7 @@ module.exports = function(){
     });    
 
 
-  	/*Route to delete peripheral*/
+ /*Route to delete peripheral*/
     router.delete('/:Id', function(req, res){
     	var mysql = req.app.get('mysql');
     	//console.log("DELETING!!");

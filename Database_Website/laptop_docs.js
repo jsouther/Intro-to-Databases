@@ -1,8 +1,13 @@
+/***********************************************************
+** Author:  Jacob Souther and Felicia Ottley
+** Date: 3/9/19
+************************************************************/
+
 module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-    /* Get document info to display table of documents*/
+/* Get document info to display table of documents*/
    	function getLaptopDocs(res, mysql, context, complete){
       mysql.pool.query("SELECT DISTINCT laptop_docs.Id, title, doc_link FROM laptop_docs LEFT JOIN laptops_laptopdocs ON laptops_laptopdocs.doc_id = laptop_docs.Id LEFT JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id", function(error, results, fields){
         if(error){
@@ -14,7 +19,7 @@ module.exports = function(){
       });
     }
 
-    /*Get specific document info for purpose of updating document*/
+/*Get specific document info for purpose of updating document*/
     function getDocument(res, mysql, context, Id, complete){
         var sql = "SELECT Id, title, doc_link FROM laptop_docs WHERE Id = ?";
         var inserts = [Id];
@@ -28,7 +33,7 @@ module.exports = function(){
         });
     }
 	
-	/*Get distinct laptop make/model listings for populating dropdown to search with*/
+/*Get distinct laptop make/model listings for populating dropdown to search with*/
 	function getLaptops(res, mysql, context, complete){
 	mysql.pool.query("SELECT DISTINCT make, model FROM laptops ORDER BY make, model", function(error, results, fields){
 		if(error){
@@ -40,7 +45,7 @@ module.exports = function(){
 	});
 }
 
-/*Get all documents assigned to specific make/model*/
+/*Get all documents assigned to specific make/model UNUSED
 function getAssignedDocs(res, mysql, context, complete, make, model){
 	var sql = "SELECT DISTINCT laptop_docs.title FROM laptop_docs INNER JOIN laptops_laptopdocs ON laptop_docs.Id = laptops_laptopdocs.doc_id INNER JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id WHERE laptops.make = ? AND laptops.model = ?";
 	var inserts = [make, model];
@@ -54,10 +59,10 @@ function getAssignedDocs(res, mysql, context, complete, make, model){
 		complete()
 	});
 }
-	
+*/	
 	
 
-    /*Route to display all documents*/
+/*Route to display all documents*/
     router.get('/', function(req,res){
       var callbackCount = 0;
       var context = {};
@@ -73,7 +78,8 @@ function getAssignedDocs(res, mysql, context, complete, make, model){
       }
     });
     
-	  //insert into laptop_docs table 
+	
+/*Route insert into laptop_docs table*/ 
 	  router.post('', function (req, res){
   	//console.log("adding!");
   	var mysql = req.app.get('mysql');
@@ -89,7 +95,7 @@ function getAssignedDocs(res, mysql, context, complete, make, model){
   	  });
     });
 
-    /*Route to URL to display one document for updating*/
+/*Route to URL to display one document for updating*/
     router.get('/:Id', function(req, res){
       callbackCount = 0;
       var context = {};
@@ -104,7 +110,8 @@ function getAssignedDocs(res, mysql, context, complete, make, model){
       }
     });
 
-    /*Route to URL that update data is sent in order to update a user*/
+
+/*Route to URL that update data is sent in order to update a user*/
     router.put('/:Id', function(req, res){
       var mysql = req.app.get('mysql');
       //console.log(req.body)
@@ -123,7 +130,7 @@ function getAssignedDocs(res, mysql, context, complete, make, model){
       });
     });
     
-    /*Route to delete laptopDoc*/
+ /*Route to delete laptopDoc*/
     router.delete('/:Id', function(req, res){
     	var mysql = req.app.get('mysql');
     	//console.log("DELETING!!");
@@ -144,17 +151,14 @@ function getAssignedDocs(res, mysql, context, complete, make, model){
     });
 	
 	
-	/*Route to display docs that pertain to make/model*/
+/*Route to display docs that pertain to make/model*/
     router.post('/search', function(req,res){
 	 callbackCount = 0;
       //console.log("HERE!!!");
 	  //console.log(req.body.laptop);
 	var params = JSON.parse(req.body.laptop);
       var context = {};
-      var mysql = req.app.get('mysql');
-      
-	  
-	  
+      var mysql = req.app.get('mysql');	  
 	  //this works but doesn't fill in the laptop dropdown
 	  var sql = "SELECT DISTINCT laptop_docs.title, laptop_docs.doc_link FROM laptop_docs INNER JOIN laptops_laptopdocs ON laptop_docs.Id = laptops_laptopdocs.doc_id INNER JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id WHERE laptops.make = ? AND laptops.model = ?";
 			var inserts = [params.make, params.model];

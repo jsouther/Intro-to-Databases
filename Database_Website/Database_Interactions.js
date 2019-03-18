@@ -41,30 +41,6 @@ res.render('home');
 
 
 
-
-
-
-// //use to delete rows
-// app.delete('/',function(req,res,next){
-// 	console.log("I'm gonna delete somethign");
-// 	var context = {};
-// 	console.log(req.body.id);
-// 	var id=req.body.id;
-// 	mysql.pool.query("DELETE FROM workouts WHERE id = (?)",[id],function(err, result){
-//     if(err){
-//       next(err);
-//       return;
-//     }
-//     context.results = "Deletedid " + result.deleteId;
-//     res.type('text/plain');
-// 	res.send(context.results);
-//   });
-	
-// });
-
-
-
-
 app.use(function(req,res){
   res.status(404);
   res.render('404');
