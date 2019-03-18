@@ -1,4 +1,6 @@
-function assignDocs(Id){
+/*function assignDocs(Id){
+};
+
     $.ajax({
         url: '/users/' + Id,
         type: 'PUT',
@@ -7,8 +9,6 @@ function assignDocs(Id){
             window.location.replace("./");
         }
     })
-};
-
 function getDocs(makemodel){
    // $.ajax({
 		console.log(makemodel);
@@ -24,3 +24,5 @@ function getDocs(makemodel){
      //   }
    // })
 };
+
+*/

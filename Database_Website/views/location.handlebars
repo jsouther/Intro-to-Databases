@@ -3,7 +3,7 @@
 
     <h1>Locations</h1>
 
-    <p>This page is used to add or remove locations. <br>* Indicates required field.</p>
+    <p>This page is used to add, remove and edit locations. <br>* Indicates required field.</p>
 
     <h3>Add Location</h3>
     <form id="newAddress" action="/location" method="post">
@@ -83,13 +83,14 @@
 
     <h3>View/Remove Locations</h3>
 
-    <h3>All Locations</h3>
     <table>
       <thead>
         <th>Street Address</th>
         <th>City</th>
         <th>State</th>
         <th>Zip</th>
+		<th>Edit</th>
+		<th>Delete</th>
       </thead>
       <tbody>
         {{#each location}}

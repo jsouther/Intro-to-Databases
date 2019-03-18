@@ -57,6 +57,18 @@
 	})
 };
 
+ function deleteLtDocRelation(Id){
+	$.ajax({
+		url: '/laptop_laptopdocs/' + Id,
+		type: 'DELETE',
+		success: function(result){
+			console.log("delete");
+			console.log(Id);
+			window.location.reload(true);
+		}
+	})
+};
+
 
 
 
