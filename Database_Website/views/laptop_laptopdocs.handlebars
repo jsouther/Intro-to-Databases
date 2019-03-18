@@ -1,0 +1,16 @@
+<h1>Assign Docs to Laptops</h1>
+
+<form id="listDocs_Laptops" action="/laptop_laptopdocs/search" method="post">
+      <fieldset>
+        <label> Laptop:
+			<select name="laptop" id="laptop" required>
+			{{#each laptops}}
+			<<option value='{"make": "{{make}}", "model" : "{{model}}"}'> {{make}} {{model}} </option>
+			{{/each}}
+			</select>
+		</label><br>
+
+
+		<input type="submit" value="Select">      
+		</fieldset>
+    </form>

@@ -22,6 +22,7 @@ app.use('/laptop_docs', require('./laptop_docs.js'));
 app.use('/location', require('./location.js'));
 app.use('/peripherals', require('./peripherals.js'));
 app.use('/users', require('./users.js'));
+app.use('/laptop_laptopdocs', require('./laptop_laptopdocs.js'));
 
 
 app.listen(app.post('port'), function(){

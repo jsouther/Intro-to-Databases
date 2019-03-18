@@ -4,7 +4,7 @@ module.exports = function(){
 
     /* Get document info to display table of documents*/
    	function getLaptopDocs(res, mysql, context, complete){
-      mysql.pool.query("SELECT laptop_docs.Id, title, doc_link, laptops.make, laptops.model FROM laptop_docs LEFT JOIN laptops_laptopdocs ON laptops_laptopdocs.doc_id = laptop_docs.Id LEFT JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id", function(error, results, fields){
+      mysql.pool.query("SELECT DISTINCT laptop_docs.Id, title, doc_link FROM laptop_docs LEFT JOIN laptops_laptopdocs ON laptops_laptopdocs.doc_id = laptop_docs.Id LEFT JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id", function(error, results, fields){
         if(error){
           res.write(JSON.stringify(error));
           res.end();
@@ -27,6 +27,35 @@ module.exports = function(){
             complete();
         });
     }
+	
+	/*Get distinct laptop make/model listings for populating dropdown to search with*/
+	function getLaptops(res, mysql, context, complete){
+	mysql.pool.query("SELECT DISTINCT make, model FROM laptops ORDER BY make, model", function(error, results, fields){
+		if(error){
+          res.write(JSON.stringify(error));
+          res.end();
+        }
+		context.laptops = results;
+		complete()
+	});
+}
+
+/*Get all documents assigned to specific make/model*/
+function getAssignedDocs(res, mysql, context, complete, make, model){
+	var sql = "SELECT DISTINCT laptop_docs.title FROM laptop_docs INNER JOIN laptops_laptopdocs ON laptop_docs.Id = laptops_laptopdocs.doc_id INNER JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id WHERE laptops.make = ? AND laptops.model = ?";
+	var inserts = [make, model];
+	mysql.pool.query(sql, inserts, function(error, results, fields){
+		if(error){
+          res.write(JSON.stringify(error));
+          res.end();
+        }
+		context.laptops = results;
+		console.log(results);
+		complete()
+	});
+}
+	
+	
 
     /*Route to display all documents*/
     router.get('/', function(req,res){
@@ -35,9 +64,10 @@ module.exports = function(){
        context.jsscripts = ["deleteFunctions.js"];
       var mysql = req.app.get('mysql');
       getLaptopDocs(res, mysql, context, complete);
+	  getLaptops(res, mysql, context, complete);
       function complete(){
         callbackCount++;
-        if(callbackCount >= 1){
+        if(callbackCount >= 2){
           res.render('laptop_docs', context);
         }
       }
@@ -112,6 +142,43 @@ module.exports = function(){
     		}
     	})
     });
+	
+	
+	/*Route to display docs that pertain to make/model*/
+    router.post('/search', function(req,res){
+	 callbackCount = 0;
+      console.log("HERE!!!");
+	  console.log(req.body.laptop);
+	var params = JSON.parse(req.body.laptop);
+      var context = {};
+      var mysql = req.app.get('mysql');
+      
+	  /*having a hard time making this work
+	  
+	  getAssignedDocs(res, mysql, context, complete, params.make, params.model);
+	  getLaptops(res, mysql, context, complete);
+	    function complete(){
+        callbackCount++;
+        if(callbackCount >= 2){
+          res.render('laptop_docs', context);
+        }
+      }*/
+	  
+	  
+	  //this works but doesn't fill in the laptop dropdown
+	  var sql = "SELECT DISTINCT laptop_docs.title, laptop_docs.doc_link FROM laptop_docs INNER JOIN laptops_laptopdocs ON laptop_docs.Id = laptops_laptopdocs.doc_id INNER JOIN laptops ON laptops.Id = laptops_laptopdocs.lt_id WHERE laptops.make = ? AND laptops.model = ?";
+	  var inserts = [params.make, params.model];
+     		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}else
+			console.log(results);
+			context.laptop_docs = results;
+			res.render('laptop_docs', context);
+		});
+    });
+	
 
     return router;
 }();

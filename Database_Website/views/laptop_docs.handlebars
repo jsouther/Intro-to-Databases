@@ -15,7 +15,8 @@
           <input type="text" maxlength="255" name="link_input" id="long" required>
         *</label><br>
 
-        <label>PC Make:
+    <!--  commented out, decided not to use 
+		<label>PC Make:
           <select name="make_input">
               <option hidden disabled disabled selected value> -- select an option -- </option>
               <option value="Dell">Dell</option>
@@ -26,13 +27,31 @@
         <label>PC Model:
           <input type="text" maxlength="25" name="model_input">
         </label><br>
-
+-->
         <input type="submit" value="Add Documentation">
       </fieldset>
     </form>
 
-    <h3>Search/Remove Documentation</h3>
+    <h3>Search for documents by laptop Make/Model</h3>
 
+	<form id="searchDocs_Laptops" action="/laptop_docs/search" method="post">
+      <fieldset>
+        <label> Laptop:
+			<select name="laptop" id="laptop" required>
+			{{#each laptops}}
+			<<option value='{"make": "{{make}}", "model" : "{{model}}"}'> {{make}} {{model}} </option>
+			{{/each}}
+			</select>
+		</label><br>
+
+
+		<input type="submit" value="Search"> 
+		<button type="button" onclick="window.location.href='/laptop_docs'">Reset Search</button>		
+		</fieldset>
+    </form>
+	
+	
+	<!-- commeted out using different form
     <form>
       <fieldset>
         <legend>Search for document</legend>
@@ -56,20 +75,25 @@
 
       </fieldset>
     </form><br>
-
-    <h3>All Docs</h3>
+-->
+    <h3>Documents</h3>
     <table>
       <thead>
+	  <!-- commenting out, not diplaying this in table
         <th>Make</th>
         <th>Model</th>
+		
+	-->
         <th>Doc Title</th>
         <th>Doc Link</th>
       </thead>
       <tbody>
         {{#each laptop_docs}}
         <tr>
-          <td>{{make}}</td>
+<!-- commenting out, decided not to display       
+	   <td>{{make}}</td>
           <td>{{model}}</td>
+		  -->
           <td>{{title}}</td>
           <td>{{doc_link}}</td>
           <td><a href="/laptop_docs/{{Id}}">Edit Document</a></td>
