@@ -45,6 +45,18 @@ module.exports = function(){
         });
     }
 
+    function getLaptopsForUpdate(res, mysql, context, Id, complete){
+        var sql = "SELECT laptops.Id, sn, users.assigned_laptop FROM laptops left JOIN users ON laptops.Id = users.assigned_laptop WHERE users.assigned_laptop IS NULL OR users.Id = ?";
+        var inserts = [Id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.laptop = results;
+            complete();
+        });
+    }
 
  /*function to get specific user info for purpose of updating user*/
     function getUser(res, mysql, context, Id, complete){
@@ -125,7 +137,7 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         getUser(res, mysql, context, req.params.Id, complete);
         getLocations(res, mysql, context, complete);
-        getLaptops(res, mysql, context, complete);
+        getLaptopsForUpdate(res, mysql, context, req.params.Id, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 3){

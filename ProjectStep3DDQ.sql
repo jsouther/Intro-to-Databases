@@ -164,12 +164,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`first_name`, `last_name`, `department`, `job_title`, `pref_phone`, `pref_email`, `home_office`, `assigned_laptop`) VALUES
-('Felicia', 'Ottley', 'IT', 'SharePoint Administrator', '208-555-1234', 'ottleyf@oregonstate.edu', 2, 5),
-('Bob', 'Builder', 'Operations', 'Foreman', '555-55-1234', 'bob@letsbuildit.com', 2, 1),
-('Mary', 'Contrary', 'Sales', 'Coordinator', '555-77-6666', 'mary@quite.com', 1, 2),
-('Greg', 'Merlot', 'Executive', 'CEO', '999-11-1111', 'Greg@imaceo.com', 4, 3),
-('Bill', 'Stone', 'Sales', 'Sales Executive', '123-45-6789', 'bill@pebkac.com', 3, 4),
-('Pichu', 'Pokemon', 'Operations', 'Electrician', '978-444-4578', 'zapper@niantic.com', 4, NULL);
+('Felicia', 'Ottley', 'IT', 'SharePoint Administrator', '2085551234', 'ottleyf@oregonstate.edu', 2, 5),
+('Bob', 'Builder', 'Operations', 'Foreman', '555551234', 'bob@letsbuildit.com', 2, 1),
+('Mary', 'Contrary', 'Sales', 'Coordinator', '5557776666', 'mary@quite.com', 1, 2),
+('Greg', 'Merlot', 'Executive', 'CEO', '9991111111', 'Greg@imaceo.com', 4, 3),
+('Bill', 'Stone', 'Sales', 'Sales Executive', '1234456789', 'bill@pebkac.com', 3, 4),
+('Pichu', 'Pokemon', 'Operations', 'Electrician', '9784444578', 'zapper@niantic.com', 4, NULL);
 
 
 --

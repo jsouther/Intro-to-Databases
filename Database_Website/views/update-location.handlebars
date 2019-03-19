@@ -3,11 +3,11 @@
 <form id="update-location" action="/location" method="post">
       <fieldset>
         <label> Street Address:
-          <input type="text" maxlength="100" name="street_address" value="{{location.street_address}}" required>
+          <input type="text" maxlength="100" name="street_address" id="street_address" value="{{location.street_address}}" required>
         *</label><br>
 
         <label> City:
-          <input type="text" maxlength="50" name="city" value="{{location.city}}" required>
+          <input type="text" maxlength="50" name="city" id="city" value="{{location.city}}" required>
         *</label><br>
 
         <label>State:
@@ -68,7 +68,7 @@
         *</label><br>
 
         <Label>5 Digit Zip:
-          <input type="text" name="zip" value="{{location.zip}}" pattern="[0-9]{5}" required>
+          <input type="text" name="zip" id="zip" value="{{location.zip}}" pattern="[0-9]{5}" required>
         *</Label><br>
 
         <button onclick="updateLocation({{location.Id}})">Update Location</button>

@@ -3,11 +3,11 @@
 <form id="update-document" action="/laptop_docs" method="post">
   <fieldset>
       <label> Title:
-        <input type="text" maxlength="100" name="title" id="long" value="{{document.title}}" required>
+        <input type="text" maxlength="100" name="title" id="title" class="long" value="{{document.title}}" required>
       *</label><br>
 
       <label> Document Web Link:
-        <input type="text" maxlength="255" name="doc_link" id="long" value="{{document.doc_link}}" required>
+        <input type="text" maxlength="255" name="doc_link" id="link" class="long" value="{{document.doc_link}}" required>
       *</label><br>
 
 <!--       <label>PC Make:
