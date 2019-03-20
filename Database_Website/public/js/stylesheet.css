@@ -21,3 +21,10 @@ background-color: #4682b4;
 .long{
   width: 50%;
 }
+
+#chromeNote{
+	color: #cc0000;
+	background: white;
+	text-align: center;
+	
+}
